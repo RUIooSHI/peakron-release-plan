@@ -223,6 +223,7 @@
           <tr><th scope="row">开发加密配置</th><td data-label="修复">开发配置改为从环境取值，和其他环境使用同一配置方式。</td><td data-label="证据范围">定向配置检查通过。已发放凭据的轮换仍待确认。</td></tr>
           <tr><th scope="row">支持请求配置</th><td data-label="修复">取消公开的默认值，使用独立配置值计算重复请求。</td><td data-label="证据范围">候选的定向检查通过，待环境配置后合入。</td></tr>
           <tr><th scope="row">环境回滚与 Worker 配置</th><td data-label="修复">每份受管环境文件仅保留一个回滚副本。审计能指出 Worker 配置来自当前发行记录或环境清单。</td><td data-label="证据范围">配置回滚和校验通过，已合入基础设施源码。</td></tr>
+          <tr><th scope="row">Handy 开发来源</th><td data-label="修复">服务端开发配置同时允许预期网页和桌面来源。</td><td data-label="证据范围">24 项定向检查通过，现场的已认证令牌请求仍待验收。</td></tr>
           <tr><th scope="row">支持请求密钥</th><td data-label="修复">独立密钥的配置入口已合入。服务端候选会在启用功能时校验密钥。</td><td data-label="证据范围">3 项配置检查与 12 项服务端检查通过。各节点仍待应用独立密钥并核对实际进程。</td></tr>
           <tr><th scope="row">开发 Web 环境文件</th><td data-label="修复">开发环境的文件已限制为管理员可读写。</td><td data-label="证据范围">同一服务进程的健康检查前后均通过。</td></tr>
           <tr><th scope="row">开发 Peakron Web 自动发布</th><td data-label="修复">定向修复已合入，将发布分支切到 qa，并支持独立签名配置。</td><td data-label="证据范围">真实投递已定位签名拒绝与旧分支。7 项定向检查通过，待现场应用并核对任务编号。</td></tr>
