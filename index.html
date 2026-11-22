@@ -131,7 +131,7 @@
       <aside class="release" aria-label="发布状态与候选">
         <strong>暂缓封板</strong>
         <p>桌面版本 · 公开计划</p>
-        <p><time datetime="2026-11-22">2026-11-22</time> · 8K 播放副本已集成</p>
+        <p><time datetime="2026-11-22">2026-11-22</time> · 5 项定向修复已完成</p>
       </aside>
     </div>
   </header>
@@ -188,7 +188,7 @@
     <section id="parallel" aria-labelledby="parallel-title">
       <div class="section-head">
         <h2 id="parallel-title">并行修复清单</h2>
-        <p>下一批有 5 项已知待修，含启动登录、设备下拉提示、混剪来源路径，以及两项基线测试。8K VR 的跨平台验收单列。</p>
+        <p>本轮 5 项已修复并通过定向复测，涵盖启动登录、两处布局和两项基线测试。跨平台和实体设备继续按封板验收登记。</p>
       </div>
       <div class="group">
         <table>
@@ -217,14 +217,19 @@
               <td data-label="验收">macOS 同一素材各拖动 24 次，已缓冲首帧 p95 从 183.73 ms 降至 100.61 ms，副本 24 次均低于 150 ms。Linux arm64 的 Electron 路径实测通过，Linux x64 安装包与 Windows x64 实机待验收。</td>
             </tr>
             <tr>
-              <th scope="row">窄屏布局与可达性 <span class="minor">A3 / F2</span></th>
-              <td data-label="拟改动">修正编辑器播放控件、设备选择提示和混剪视频来源的裁切，并检查截图中可能被遮住或折行的操作。</td>
-              <td data-label="验收">在 384、768、1024、1440 CSS 像素核对文字和控件。用滚动与键盘实际验证，确认保存、停止、缩放等操作可达。<div class="links"><a href="#copy">文案单列</a></div></td>
+              <th scope="row">设备提示与混剪来源 <span class="minor">A3-009 / A3-010 · 已通过</span></th>
+              <td data-label="改动">播放器无设备时可读完整下拉提示。混剪的创建、共享来源和单段重建可读完整路径。</td>
+              <td data-label="验收">设备提示在 1440、1024、768 CSS 像素通过。混剪在 384 CSS 像素验证了同名视频的路径和键盘操作。</td>
             </tr>
             <tr>
-              <th scope="row">启动时刷新未返回 <span class="minor">重启登录的延迟分支</span></th>
-              <td data-label="拟改动">测登录刷新延迟对主窗口出现时间的影响，再确定窗口先显示等待或维持当前启动顺序的上限。</td>
-              <td data-label="验收">正常重启、503 重试、401 清理保持原验证结果。刷新迟迟不返回时，记录窗口出现、用户可见反馈、恢复和关闭的时间线。</td>
+              <th scope="row">启动时刷新未返回 <span class="minor">已通过</span></th>
+              <td data-label="改动">应用先打开主窗口，登录恢复期间可进入图库。需要账号的功能显示正在连接。</td>
+              <td data-label="验收">冷启动测试中刷新仍挂起时主窗口已经就绪。503 重试、401 清理和退出保存轮换凭据均通过。</td>
+            </tr>
+            <tr>
+              <th scope="row">基线测试 <span class="minor">两项已通过</span></th>
+              <td data-label="改动">更新 MV 选段和旧文档的回归，补齐 22 个故障码的排查指引。</td>
+              <td data-label="验收">两项历史失败均通过。本轮共通过 189 项相关单测和 5 项 Electron 场景。</td>
             </tr>
           </tbody>
         </table>
@@ -376,7 +381,7 @@
         </details>
         <details class="note" open>
           <summary>回归与真实 dev</summary>
-          <p>关闭 G0 已知失败并核对历史基线。历史回放当前有 9/22 条证据，门槛为 18/22。3 个实际 dev 种子需先核对部署产物、审计账号及预算，再记录任务和实例清理。</p>
+          <p>G0 两项已知失败已修复，其余历史基线继续核对。历史回放当前有 9/22 条证据，门槛为 18/22。3 个实际 dev 种子需先核对部署产物、审计账号及预算，再记录任务和实例清理。</p>
         </details>
         <details class="note" open>
           <summary>封板签收顺序</summary>
