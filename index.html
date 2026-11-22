@@ -146,6 +146,7 @@
       <a href="#mix-scrub-and-resize">混剪拖动与出帧</a>
       <a href="#interaction-and-web-errors">交互与旧 Web 文案</a>
       <a href="#local-generation-progress">本地生成进度</a>
+      <a href="#cloud-inference-progress">云端推理进度</a>
       <a href="#cloud-upload-recovery">云端上传恢复</a>
       <a href="#account-capabilities">账号重连</a>
       <a href="#update-upload-wait">更新等待</a>
@@ -341,6 +342,14 @@
       </div>
     </section>
 
+    <section id="cloud-inference-progress" aria-labelledby="cloud-inference-progress-title">
+      <div class="section-head">
+        <h2 id="cloud-inference-progress-title">云端推理进度</h2>
+        <p>桌面显示服务端上报的推理进度。等待、传送、保存和未知进度沿用各自的阶段提示。</p>
+      </div>
+      <p>定向验证中，同一任务由 44% 更新到 62%，进度未知时撤下数值。已提交桌面源码，现场 Worker 上报仍待验收。</p>
+    </section>
+
     <section id="cloud-upload-recovery" aria-labelledby="cloud-upload-recovery-title">
       <div class="section-head">
         <h2 id="cloud-upload-recovery-title">中断后的云端上传</h2>
@@ -531,7 +540,7 @@
       </div>
       <div class="note copy-opening">
         <p>47 条文案均有修复记录。第二批覆盖余下 24 条，包括首批已有部分改动的 4 条。47 条原始记录都可在下方查阅。</p>
-        <p><strong>候选核对</strong> 已核对 A4-003、004、014 的档位、生成阶段与模型下载按钮，安排按候选界面复测。其余历史记录按可见入口逐条验证。</p>
+        <p>逐项标注已提交源码的修复状态。设备实机与实际部署的验收范围见上方各项记录。</p>
       </div>
       <div class="copy-cases" aria-label="A4 审计逐条修复计划">
         <details class="note" open>
@@ -541,9 +550,9 @@
             <table>
               <thead><tr><th scope="col">编号</th><th scope="col">发现</th><th scope="col">拟改动与验收</th></tr></thead>
               <tbody>
-                <tr id="copy-a4-031"><th scope="row">A4-031<span class="copy-status">P2 · 候选源码仍见</span></th><td data-label="发现">VR 的 Auto / On 说明讲单眼转换和元数据，用户看不出三种模式的结果。</td><td data-label="拟改动与验收">Auto 写自动识别，On 写按 VR 处理，Off 写按普通视频处理。每种用典型素材验证选项、结果和提示一致。</td></tr>
-                <tr id="copy-a4-008"><th scope="row">A4-008<span class="copy-status">P2 · 历史审计判断</span></th><td data-label="发现">Full video uploaded. 可能让用户以为整份原片已经上传。</td><td data-label="拟改动与验收">在本地、云端和加轴各走一次真实数据链路，确认传输的是分析用视频、特征或其他数据，再准确写明传输对象。</td></tr>
-                <tr id="copy-a4-029"><th scope="row">A4-029<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Local 只写在本机运行，首次需要的大额模型下载没有提前说明。</td><td data-label="拟改动与验收">首次选择时明确需要下载及可核实的大小，区分已安装状态，并验证下载由用户操作触发。</td></tr>
+                <tr id="copy-a4-031"><th scope="row">A4-031<span class="copy-status">P2 · 桌面已改</span></th><td data-label="发现">VR 的 Auto / On 说明讲单眼转换和元数据，用户看不出三种模式的结果。</td><td data-label="拟改动与验收">Auto 写自动识别，On 写按 VR 处理，Off 写按普通视频处理。每种用典型素材验证选项、结果和提示一致。</td></tr>
+                <tr id="copy-a4-008"><th scope="row">A4-008<span class="copy-status">P2 · 桌面已改</span></th><td data-label="发现">Full video uploaded. 可能让用户以为整份原片已经上传。</td><td data-label="拟改动与验收">在本地、云端和加轴各走一次真实数据链路，确认传输的是分析用视频、特征或其他数据，再准确写明传输对象。</td></tr>
+                <tr id="copy-a4-029"><th scope="row">A4-029<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">Local 只写在本机运行，首次需要的大额模型下载没有提前说明。</td><td data-label="拟改动与验收">首次选择时明确需要下载及可核实的大小，区分已安装状态，并验证下载由用户操作触发。</td></tr>
               </tbody>
             </table>
           </div>
@@ -555,14 +564,14 @@
             <table>
               <thead><tr><th scope="col">编号</th><th scope="col">发现</th><th scope="col">拟改动与验收</th></tr></thead>
               <tbody>
-                <tr id="copy-a4-010"><th scope="row">A4-010<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">停止未确认有多种说法，有的提示指向桌面不存在的按钮。</td><td data-label="拟改动与验收">统一未确认提示，只指向当前界面可用的重试；检查播放器、侧栏与旧 Web。</td></tr>
-                <tr id="copy-a4-033"><th scope="row">A4-033<span class="copy-status">P2 · 历史审计判断</span></th><td data-label="发现">Stop guarantee、Native writes 等协议词遮盖了断线后设备可能未停的事实。</td><td data-label="拟改动与验收">按当前会话证据说明是否确认停止、能否重试。用无远端回执和旧回执验证两处提示一致。</td></tr>
-                <tr id="copy-a4-032"><th scope="row">A4-032<span class="copy-status">P2 · 历史源码证据</span></th><td data-label="发现">多个脚本关联同一视频时禁用播放，只提示 Needs migration。</td><td data-label="拟改动与验收">说明视频有关联多个脚本，并提供实际受支持的处理入口。验证卡片、列表和选择器。</td></tr>
-                <tr id="copy-a4-038"><th scope="row">A4-038<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">速度警告使用 displacement、L0 preset 等量纲或实现名。</td><td data-label="拟改动与验收">标明哪个片段或轴超限、可在哪里调整；用一段超过限制的脚本验收。</td></tr>
-                <tr id="copy-a4-039"><th scope="row">A4-039<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">设备设置和蓝牙失败使用 binding、credential、advertisement 等词。</td><td data-label="拟改动与验收">按连接失败原因给出用户能执行的处理，例如检查设备权限或重新连接。逐个验证对应界面。</td></tr>
-                <tr id="copy-a4-040"><th scope="row">A4-040<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">文件夹同步和脚本清理讲底层文件处理，改动后果难读。</td><td data-label="拟改动与验收">先说明哪些视频或脚本受影响、能否保留或撤销。用新增、缺失和已移动文件分别验收。</td></tr>
-                <tr id="copy-a4-041"><th scope="row">A4-041<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Library identity、Mix state 等内部对象名被用在失败句子中。</td><td data-label="拟改动与验收">写清哪个界面操作失败、原数据是否还在，以及可执行的重试。</td></tr>
-                <tr id="copy-a4-023"><th scope="row">A4-023<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Peakron Web 部分错误句长且含 Please，失败与处理动作往往分散。</td><td data-label="拟改动与验收">先定适用于该 Web 的文案规范，按登录、会话和网络恢复核对。桌面短句规则沿用既有约定。</td></tr>
+                <tr id="copy-a4-010"><th scope="row">A4-010<span class="copy-status">P3 · 桌面和 Web 已改</span></th><td data-label="发现">停止未确认有多种说法，有的提示指向桌面不存在的按钮。</td><td data-label="拟改动与验收">统一未确认提示，只指向当前界面可用的重试；检查播放器、侧栏与旧 Web。</td></tr>
+                <tr id="copy-a4-033"><th scope="row">A4-033<span class="copy-status">P2 · 桌面和 Web 已改</span></th><td data-label="发现">Stop guarantee、Native writes 等协议词遮盖了断线后设备可能未停的事实。</td><td data-label="拟改动与验收">按当前会话证据说明是否确认停止、能否重试。用无远端回执和旧回执验证两处提示一致。</td></tr>
+                <tr id="copy-a4-032"><th scope="row">A4-032<span class="copy-status">P2 · 桌面已改</span></th><td data-label="发现">多个脚本关联同一视频时禁用播放，只提示 Needs migration。</td><td data-label="拟改动与验收">说明视频有关联多个脚本，并提供实际受支持的处理入口。验证卡片、列表和选择器。</td></tr>
+                <tr id="copy-a4-038"><th scope="row">A4-038<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">速度警告使用 displacement、L0 preset 等量纲或实现名。</td><td data-label="拟改动与验收">标明哪个片段或轴超限、可在哪里调整；用一段超过限制的脚本验收。</td></tr>
+                <tr id="copy-a4-039"><th scope="row">A4-039<span class="copy-status">P3 · 桌面和 Web 已改</span></th><td data-label="发现">设备设置和蓝牙失败使用 binding、credential、advertisement 等词。</td><td data-label="拟改动与验收">按连接失败原因给出用户能执行的处理，例如检查设备权限或重新连接。逐个验证对应界面。</td></tr>
+                <tr id="copy-a4-040"><th scope="row">A4-040<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">文件夹同步和脚本清理讲底层文件处理，改动后果难读。</td><td data-label="拟改动与验收">先说明哪些视频或脚本受影响、能否保留或撤销。用新增、缺失和已移动文件分别验收。</td></tr>
+                <tr id="copy-a4-041"><th scope="row">A4-041<span class="copy-status">P3 · 桌面和 Web 已改</span></th><td data-label="发现">Library identity、Mix state 等内部对象名被用在失败句子中。</td><td data-label="拟改动与验收">写清哪个界面操作失败、原数据是否还在，以及可执行的重试。</td></tr>
+                <tr id="copy-a4-023"><th scope="row">A4-023<span class="copy-status">P3 · Web 已改</span></th><td data-label="发现">Peakron Web 部分错误句长且含 Please，失败与处理动作往往分散。</td><td data-label="拟改动与验收">先定适用于该 Web 的文案规范，按登录、会话和网络恢复核对。桌面短句规则沿用既有约定。</td></tr>
               </tbody>
             </table>
           </div>
@@ -574,19 +583,19 @@
             <table>
               <thead><tr><th scope="col">编号</th><th scope="col">发现</th><th scope="col">拟改动与验收</th></tr></thead>
               <tbody>
-                <tr id="copy-a4-001"><th scope="row">A4-001<span class="copy-status">P2 · 历史源码证据</span></th><td data-label="发现">任务卡引擎行直接展示底层回退原因。</td><td data-label="拟改动与验收">把底层原因映射到用户可见的计算状态和可行行动。验证部分回退与完全不可用。</td></tr>
-                <tr id="copy-a4-002"><th scope="row">A4-002<span class="copy-status">P2 · 历史源码证据</span></th><td data-label="发现">本地模型提示出现 R2、release key 或原始消息。</td><td data-label="拟改动与验收">区分下载、校验或访问失败，显示具体可用动作及支持引用。</td></tr>
-                <tr id="copy-a4-015"><th scope="row">A4-015<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">播放器显示 {provenance} capabilities 一类枚举。</td><td data-label="拟改动与验收">仅展示用户需要的设备能力与限制；造含未知枚举的响应复测。</td></tr>
-                <tr id="copy-a4-016"><th scope="row">A4-016<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">OSSM 对话框直接展示固件 mode 和 phase。</td><td data-label="拟改动与验收">把固件状态映射到当前可执行的设置动作；未知值使用可理解提示。</td></tr>
-                <tr id="copy-a4-017"><th scope="row">A4-017<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Neural Engine 不可用时，状态栏 GPU only 后仍可能带核心原文。</td><td data-label="拟改动与验收">检查部分回退、完全不可用两条路径，展示正确的计算方式和短说明。</td></tr>
-                <tr id="copy-a4-018"><th scope="row">A4-018<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">手写失败句拼接 error.message 或 String(error)。</td><td data-label="拟改动与验收">从确切的失败入口接入安全提示映射，验证合成路径、异常名和堆栈不会进普通提示。</td></tr>
-                <tr id="copy-a4-019"><th scope="row">A4-019<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Intiface 映射显示内部 ID、scalar 和通道序号。</td><td data-label="拟改动与验收">使用可辨认的设备名与控制项，保持同名设备或通道可区分。</td></tr>
-                <tr id="copy-a4-024"><th scope="row">A4-024<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">旧 Web 的 Lovense 错误含 PatternV2、control plane 等实现词。</td><td data-label="拟改动与验收">按设备不支持或暂时不可用等用户状态改写，用旧 Web 响应夹具触发原入口。</td></tr>
-                <tr id="copy-a4-030"><th scope="row">A4-030<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Local / Cloud 禁用时使用 capability、desktop build，原因离选择控件远。</td><td data-label="拟改动与验收">在对应选项旁说明禁用原因和下一步，分别验证权限、环境、资源与网络失败。</td></tr>
-                <tr id="copy-a4-042"><th scope="row">A4-042<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">启动错误要求用户寻找内部数据库文件。</td><td data-label="拟改动与验收">用用户认识的图库位置和恢复入口说明；支持详情保留需要的诊断路径。</td></tr>
-                <tr id="copy-a4-043"><th scope="row">A4-043<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">共享校验和主进程含大量内部术语，是否到达界面须逐条追踪。</td><td data-label="拟改动与验收">先找实际可见出口，已确认透传的分支加映射与负例；内部日志保留原解释。</td></tr>
-                <tr id="copy-a4-046"><th scope="row">A4-046<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">视频播放、混剪和刷新等失败句也拼接原始错误。</td><td data-label="拟改动与验收">用素材不可用、混剪加载失败、刷新失败等场景分别触发并检查提示。</td></tr>
-                <tr id="copy-a4-047"><th scope="row">A4-047<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">生成来源行直接显示 Task {status}，原样呈现状态枚举。</td><td data-label="拟改动与验收">使用生成界面共享的状态词，按真实状态显示等待、结束或取消等可执行动作。</td></tr>
+                <tr id="copy-a4-001"><th scope="row">A4-001<span class="copy-status">P2 · 桌面已改</span></th><td data-label="发现">任务卡引擎行直接展示底层回退原因。</td><td data-label="拟改动与验收">把底层原因映射到用户可见的计算状态和可行行动。验证部分回退与完全不可用。</td></tr>
+                <tr id="copy-a4-002"><th scope="row">A4-002<span class="copy-status">P2 · 桌面已改</span></th><td data-label="发现">本地模型提示出现 R2、release key 或原始消息。</td><td data-label="拟改动与验收">区分下载、校验或访问失败，显示具体可用动作及支持引用。</td></tr>
+                <tr id="copy-a4-015"><th scope="row">A4-015<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">播放器显示 {provenance} capabilities 一类枚举。</td><td data-label="拟改动与验收">仅展示用户需要的设备能力与限制；造含未知枚举的响应复测。</td></tr>
+                <tr id="copy-a4-016"><th scope="row">A4-016<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">OSSM 对话框直接展示固件 mode 和 phase。</td><td data-label="拟改动与验收">把固件状态映射到当前可执行的设置动作；未知值使用可理解提示。</td></tr>
+                <tr id="copy-a4-017"><th scope="row">A4-017<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">Neural Engine 不可用时，状态栏 GPU only 后仍可能带核心原文。</td><td data-label="拟改动与验收">检查部分回退、完全不可用两条路径，展示正确的计算方式和短说明。</td></tr>
+                <tr id="copy-a4-018"><th scope="row">A4-018<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">手写失败句拼接 error.message 或 String(error)。</td><td data-label="拟改动与验收">从确切的失败入口接入安全提示映射，验证合成路径、异常名和堆栈不会进普通提示。</td></tr>
+                <tr id="copy-a4-019"><th scope="row">A4-019<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">Intiface 映射显示内部 ID、scalar 和通道序号。</td><td data-label="拟改动与验收">使用可辨认的设备名与控制项，保持同名设备或通道可区分。</td></tr>
+                <tr id="copy-a4-024"><th scope="row">A4-024<span class="copy-status">P3 · 旧 Web 已改</span></th><td data-label="发现">旧 Web 的 Lovense 错误含 PatternV2、control plane 等实现词。</td><td data-label="拟改动与验收">按设备不支持或暂时不可用等用户状态改写，用旧 Web 响应夹具触发原入口。</td></tr>
+                <tr id="copy-a4-030"><th scope="row">A4-030<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">Local / Cloud 禁用时使用 capability、desktop build，原因离选择控件远。</td><td data-label="拟改动与验收">在对应选项旁说明禁用原因和下一步，分别验证权限、环境、资源与网络失败。</td></tr>
+                <tr id="copy-a4-042"><th scope="row">A4-042<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">启动错误要求用户寻找内部数据库文件。</td><td data-label="拟改动与验收">用用户认识的图库位置和恢复入口说明；支持详情保留需要的诊断路径。</td></tr>
+                <tr id="copy-a4-043"><th scope="row">A4-043<span class="copy-status">P3 · 桌面和 Web 已改</span></th><td data-label="发现">共享校验和主进程含大量内部术语，是否到达界面须逐条追踪。</td><td data-label="拟改动与验收">先找实际可见出口，已确认透传的分支加映射与负例；内部日志保留原解释。</td></tr>
+                <tr id="copy-a4-046"><th scope="row">A4-046<span class="copy-status">P3 · 桌面和 Web 已改</span></th><td data-label="发现">视频播放、混剪和刷新等失败句也拼接原始错误。</td><td data-label="拟改动与验收">用素材不可用、混剪加载失败、刷新失败等场景分别触发并检查提示。</td></tr>
+                <tr id="copy-a4-047"><th scope="row">A4-047<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">生成来源行直接显示 Task {status}，原样呈现状态枚举。</td><td data-label="拟改动与验收">使用生成界面共享的状态词，按真实状态显示等待、结束或取消等可执行动作。</td></tr>
               </tbody>
             </table>
           </div>
@@ -598,19 +607,19 @@
             <table>
               <thead><tr><th scope="col">编号</th><th scope="col">发现</th><th scope="col">拟改动与验收</th></tr></thead>
               <tbody>
-                <tr id="copy-a4-003"><th scope="row">A4-003<span class="copy-status">P2 · 候选源码仍见</span></th><td data-label="发现">桌面选择 Exact，任务行仍可能显示存储名 Balanced。</td><td data-label="拟改动与验收">统一走档位显示映射。用同一个新任务和历史记录核对创建页、筛选和行内容。</td></tr>
-                <tr id="copy-a4-004"><th scope="row">A4-004<span class="copy-status">P2 · 候选源码仍见</span></th><td data-label="发现">排队、准备、推理、返回结果和保存可能共用 Generating stroke。</td><td data-label="拟改动与验收">将任务真实阶段映射到短文案。对照后台事件验证阶段及时切换，未知进度用合适反馈。</td></tr>
-                <tr id="copy-a4-005"><th scope="row">A4-005<span class="copy-status">P2 · 历史源码证据</span></th><td data-label="发现">本地等待 GPU 仍显示 Generating stroke 和 0%。</td><td data-label="拟改动与验收">两项本地任务并行时显示等待状态；拿到资源后再进入生成。</td></tr>
-                <tr id="copy-a4-006"><th scope="row">A4-006<span class="copy-status">P2 · 历史源码证据</span></th><td data-label="发现">旧 Web 任务详情写 Balanced，同一档位在新建和筛选叫 Exact。</td><td data-label="拟改动与验收">同步旧 Web 详情的显示映射，验证同一任务跨页面一致。</td></tr>
-                <tr id="copy-a4-013"><th scope="row">A4-013<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">任务行的 Pause 实际暂停多个任务共享的模型下载。</td><td data-label="拟改动与验收">在按钮和说明中写清共享下载范围，用两项等模型的任务验证。</td></tr>
-                <tr id="copy-a4-014"><th scope="row">A4-014<span class="copy-status">P3 · 候选源码仍见</span></th><td data-label="发现">状态栏模型下载按钮只写 Pause / Resume。</td><td data-label="拟改动与验收">按钮明确写 Pause download / Resume download，可访问名称与可见文字一致。</td></tr>
-                <tr id="copy-a4-021"><th scope="row">A4-021<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">通知标题和任务卡对成功或失败各用不同状态词。</td><td data-label="拟改动与验收">按同一任务类型对齐通知、任务卡与记录。分别核对生成失败、上传失败和已完成。</td></tr>
-                <tr id="copy-a4-025"><th scope="row">A4-025<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Failed 2 / Paused 1 没说是几项什么。</td><td data-label="拟改动与验收">补任务对象与正确单复数，检查一项、多项和窄窗口。</td></tr>
-                <tr id="copy-a4-026"><th scope="row">A4-026<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">本地发送特征时显示 Uploading，易与上传原片混淆。</td><td data-label="拟改动与验收">以实际发送的对象命名阶段，和本地模式的数据说明一起核对。</td></tr>
-                <tr id="copy-a4-034"><th scope="row">A4-034<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">编辑器显示 PERSISTED · REV n 等内部版本状态。</td><td data-label="拟改动与验收">面向用户显示已保存、未保存、正在建立或恢复草稿，确认退出前判断清楚。</td></tr>
-                <tr id="copy-a4-035"><th scope="row">A4-035<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">连接状态使用 Real protocol 和 Script output available，还可能让用户过早以为设备就绪。</td><td data-label="拟改动与验收">用握手、命令反馈和连接探针验证状态，显示真实的可用或重连信息。</td></tr>
-                <tr id="copy-a4-036"><th scope="row">A4-036<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">本地任务等待文案讲编译、重启引擎、已有字节等细节。</td><td data-label="拟改动与验收">按准备、下载、等待恢复展示原因与预计下一步，并校对本地与云端边界。</td></tr>
-                <tr id="copy-a4-037"><th scope="row">A4-037<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Checking components 与 You can start now 同屏，能否继续不清楚。</td><td data-label="拟改动与验收">区分正在检查与可开始，校对按钮状态、回查动作和标签。</td></tr>
+                <tr id="copy-a4-003"><th scope="row">A4-003<span class="copy-status">P2 · 桌面已改</span></th><td data-label="发现">桌面选择 Exact，任务行仍可能显示存储名 Balanced。</td><td data-label="拟改动与验收">统一走档位显示映射。用同一个新任务和历史记录核对创建页、筛选和行内容。</td></tr>
+                <tr id="copy-a4-004"><th scope="row">A4-004<span class="copy-status">P2 · 桌面已改</span></th><td data-label="发现">排队、准备、推理、返回结果和保存可能共用 Generating stroke。</td><td data-label="拟改动与验收">将任务真实阶段映射到短文案。对照后台事件验证阶段及时切换，未知进度用合适反馈。</td></tr>
+                <tr id="copy-a4-005"><th scope="row">A4-005<span class="copy-status">P2 · 桌面已改</span></th><td data-label="发现">本地等待 GPU 仍显示 Generating stroke 和 0%。</td><td data-label="拟改动与验收">两项本地任务并行时显示等待状态；拿到资源后再进入生成。</td></tr>
+                <tr id="copy-a4-006"><th scope="row">A4-006<span class="copy-status">P2 · 旧 Web 已改</span></th><td data-label="发现">旧 Web 任务详情写 Balanced，同一档位在新建和筛选叫 Exact。</td><td data-label="拟改动与验收">同步旧 Web 详情的显示映射，验证同一任务跨页面一致。</td></tr>
+                <tr id="copy-a4-013"><th scope="row">A4-013<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">任务行的 Pause 实际暂停多个任务共享的模型下载。</td><td data-label="拟改动与验收">在按钮和说明中写清共享下载范围，用两项等模型的任务验证。</td></tr>
+                <tr id="copy-a4-014"><th scope="row">A4-014<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">状态栏模型下载按钮只写 Pause / Resume。</td><td data-label="拟改动与验收">按钮明确写 Pause download / Resume download，可访问名称与可见文字一致。</td></tr>
+                <tr id="copy-a4-021"><th scope="row">A4-021<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">通知标题和任务卡对成功或失败各用不同状态词。</td><td data-label="拟改动与验收">按同一任务类型对齐通知、任务卡与记录。分别核对生成失败、上传失败和已完成。</td></tr>
+                <tr id="copy-a4-025"><th scope="row">A4-025<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">Failed 2 / Paused 1 没说是几项什么。</td><td data-label="拟改动与验收">补任务对象与正确单复数，检查一项、多项和窄窗口。</td></tr>
+                <tr id="copy-a4-026"><th scope="row">A4-026<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">本地发送特征时显示 Uploading，易与上传原片混淆。</td><td data-label="拟改动与验收">以实际发送的对象命名阶段，和本地模式的数据说明一起核对。</td></tr>
+                <tr id="copy-a4-034"><th scope="row">A4-034<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">编辑器显示 PERSISTED · REV n 等内部版本状态。</td><td data-label="拟改动与验收">面向用户显示已保存、未保存、正在建立或恢复草稿，确认退出前判断清楚。</td></tr>
+                <tr id="copy-a4-035"><th scope="row">A4-035<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">连接状态使用 Real protocol 和 Script output available，还可能让用户过早以为设备就绪。</td><td data-label="拟改动与验收">用握手、命令反馈和连接探针验证状态，显示真实的可用或重连信息。</td></tr>
+                <tr id="copy-a4-036"><th scope="row">A4-036<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">本地任务等待文案讲编译、重启引擎、已有字节等细节。</td><td data-label="拟改动与验收">按准备、下载、等待恢复展示原因与预计下一步，并校对本地与云端边界。</td></tr>
+                <tr id="copy-a4-037"><th scope="row">A4-037<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">Checking components 与 You can start now 同屏，能否继续不清楚。</td><td data-label="拟改动与验收">区分正在检查与可开始，校对按钮状态、回查动作和标签。</td></tr>
               </tbody>
             </table>
           </div>
@@ -622,16 +631,16 @@
             <table>
               <thead><tr><th scope="col">编号</th><th scope="col">发现</th><th scope="col">拟改动与验收</th></tr></thead>
               <tbody>
-                <tr id="copy-a4-007"><th scope="row">A4-007<span class="copy-status">P2 · 历史审计判断</span></th><td data-label="发现">桌面 Peakron 登录后跳到写 PeakSync Desktop 的授权页。</td><td data-label="拟改动与验收">由产品确认授权页的品牌与账户称呼，再跑一遍桌面到浏览器及返回的完整流程。</td></tr>
-                <tr id="copy-a4-009"><th scope="row">A4-009<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">设备停止动作有多种叫法。</td><td data-label="拟改动与验收">按动作语义统一普通停止、紧急停止与重试，确认各入口与实际行为匹配。</td></tr>
-                <tr id="copy-a4-011"><th scope="row">A4-011<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">OSSM 设置叫 Acceleration，相关失败提示叫 sensation。</td><td data-label="拟改动与验收">以用户在设置看到的同一名称描述输入和值；验证非法值错误。</td></tr>
-                <tr id="copy-a4-012"><th scope="row">A4-012<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">同一批下载物在面板、状态栏和失败提示里的名称不同。</td><td data-label="拟改动与验收">为运行组件、分析资源和本地模型逐个确定名称，用下载、暂停、失败三态检查。</td></tr>
-                <tr id="copy-a4-020"><th scope="row">A4-020<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Rhythm 和 Intensity 各用于多个概念。</td><td data-label="拟改动与验收">区分节奏档位与强度设置；核对生成面板、播放和任务历史。</td></tr>
-                <tr id="copy-a4-022"><th scope="row">A4-022<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">authorization 同时指登录审批、设备授权和生成资格。</td><td data-label="拟改动与验收">按对象写登录、设备权限或当前方案可用性，分别造状态确认。</td></tr>
-                <tr id="copy-a4-027"><th scope="row">A4-027<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">同一时间窗口的额度有时叫 quota、有时叫 limit。</td><td data-label="拟改动与验收">保持账页和错误提示用同一额度名，保留周期和恢复条件。</td></tr>
-                <tr id="copy-a4-028"><th scope="row">A4-028<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Lovense 一处叫 toy，其它地方叫 device。</td><td data-label="拟改动与验收">统一设备称谓，核对连接、断开与故障提示。</td></tr>
-                <tr id="copy-a4-044"><th scope="row">A4-044<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">Library 的大小写和冠词用法混杂。</td><td data-label="拟改动与验收">规定导航项和普通名词的用法，校对入口、导入和错误提示。</td></tr>
-                <tr id="copy-a4-045"><th scope="row">A4-045<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">导航叫 Music Video，页面大量写 MV。</td><td data-label="拟改动与验收">明确首次出现的功能名与简称规则，核对导航、详情及提示。</td></tr>
+                <tr id="copy-a4-007"><th scope="row">A4-007<span class="copy-status">P2 · 旧 Web 已改</span></th><td data-label="发现">桌面 Peakron 登录后跳到写 PeakSync Desktop 的授权页。</td><td data-label="拟改动与验收">由产品确认授权页的品牌与账户称呼，再跑一遍桌面到浏览器及返回的完整流程。</td></tr>
+                <tr id="copy-a4-009"><th scope="row">A4-009<span class="copy-status">P3 · 桌面和 Web 已改</span></th><td data-label="发现">设备停止动作有多种叫法。</td><td data-label="拟改动与验收">按动作语义统一普通停止、紧急停止与重试，确认各入口与实际行为匹配。</td></tr>
+                <tr id="copy-a4-011"><th scope="row">A4-011<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">OSSM 设置叫 Acceleration，相关失败提示叫 sensation。</td><td data-label="拟改动与验收">以用户在设置看到的同一名称描述输入和值；验证非法值错误。</td></tr>
+                <tr id="copy-a4-012"><th scope="row">A4-012<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">同一批下载物在面板、状态栏和失败提示里的名称不同。</td><td data-label="拟改动与验收">为运行组件、分析资源和本地模型逐个确定名称，用下载、暂停、失败三态检查。</td></tr>
+                <tr id="copy-a4-020"><th scope="row">A4-020<span class="copy-status">P3 · 桌面和 Web 已改</span></th><td data-label="发现">Rhythm 和 Intensity 各用于多个概念。</td><td data-label="拟改动与验收">区分节奏档位与强度设置；核对生成面板、播放和任务历史。</td></tr>
+                <tr id="copy-a4-022"><th scope="row">A4-022<span class="copy-status">P3 · 桌面和 Web 已改</span></th><td data-label="发现">authorization 同时指登录审批、设备授权和生成资格。</td><td data-label="拟改动与验收">按对象写登录、设备权限或当前方案可用性，分别造状态确认。</td></tr>
+                <tr id="copy-a4-027"><th scope="row">A4-027<span class="copy-status">P3 · 桌面已改</span></th><td data-label="发现">同一时间窗口的额度有时叫 quota、有时叫 limit。</td><td data-label="拟改动与验收">保持账页和错误提示用同一额度名，保留周期和恢复条件。</td></tr>
+                <tr id="copy-a4-028"><th scope="row">A4-028<span class="copy-status">P3 · 桌面和 Web 已改</span></th><td data-label="发现">Lovense 一处叫 toy，其它地方叫 device。</td><td data-label="拟改动与验收">统一设备称谓，核对连接、断开与故障提示。</td></tr>
+                <tr id="copy-a4-044"><th scope="row">A4-044<span class="copy-status">P3 · 桌面和 Web 已改</span></th><td data-label="发现">Library 的大小写和冠词用法混杂。</td><td data-label="拟改动与验收">规定导航项和普通名词的用法，校对入口、导入和错误提示。</td></tr>
+                <tr id="copy-a4-045"><th scope="row">A4-045<span class="copy-status">P3 · 桌面和公开站已改</span></th><td data-label="发现">导航叫 Music Video，页面大量写 MV。</td><td data-label="拟改动与验收">明确首次出现的功能名与简称规则，核对导航、详情及提示。</td></tr>
               </tbody>
             </table>
           </div>
