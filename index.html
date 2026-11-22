@@ -131,7 +131,7 @@
       <aside class="release" aria-label="发布状态与候选">
         <strong>暂缓封板</strong>
         <p>桌面版本 · 公开计划</p>
-        <p><time datetime="2026-11-22">2026-11-22</time> · 本批修复 4 条既有记录</p>
+        <p><time datetime="2026-11-22">2026-11-22</time> · 本批修复 2 条，复核关闭 2 条</p>
       </aside>
     </div>
   </header>
@@ -139,6 +139,7 @@
     <div class="wrap">
       <a href="#blockers">封板阻断</a>
       <a href="#device-link-followup">设备修复</a>
+      <a href="#mix-scrub-and-resize">混剪拖动与出帧</a>
       <a href="#interaction-and-web-errors">交互与旧 Web 文案</a>
       <a href="#local-generation-progress">本地生成进度</a>
       <a href="#cloud-upload-recovery">云端上传恢复</a>
@@ -215,6 +216,18 @@
           <tr><th scope="row">实际设备</th><td data-label="修复">停止仍以回执确认。</td><td data-label="证据范围">实体 Wi-Fi、蓝牙和物理停止待验收。</td></tr>
         </tbody>
       </table>
+    </section>
+
+    <section id="mix-scrub-and-resize" aria-labelledby="mix-scrub-and-resize-title">
+      <div class="section-head">
+        <h2 id="mix-scrub-and-resize-title">混剪拖动和出帧复核</h2>
+        <p>修复了混剪的进度拖动与片段长度反馈，复核了两条出帧记录。</p>
+      </div>
+      <ul>
+        <li>无设备连接时，拖动进度条会显示目标画面。原始 1080p 素材的三次定向验证达到每秒 19–40 个匹配画面。</li>
+        <li>拖动片段边界时，同一档位沿用现有反馈。定向测量中，反馈面板的布局读取从 460 次降到 100 次，两版的输入延迟 p95 均为 32 毫秒。</li>
+        <li>原报告标为没出帧的 5 次混剪切片与 6 次普通播放器跳转均有目标帧。播放中切片的一次长帧仍保留待归因。</li>
+      </ul>
     </section>
 
     <section id="interaction-and-web-errors" aria-labelledby="interaction-and-web-errors-title">
