@@ -131,7 +131,7 @@
       <aside class="release" aria-label="发布状态与候选">
         <strong>暂缓封板</strong>
         <p>桌面版本 · 公开计划</p>
-        <p><time datetime="2026-11-21">2026-11-21</time> · 待评审</p>
+        <p><time datetime="2026-11-21">2026-11-21</time> · 首批修复已提交</p>
       </aside>
     </div>
   </header>
@@ -157,7 +157,7 @@
           <p class="fact">六个虚拟用例均超出 1.5 秒。观测到 8、16、43 秒才提示停止未确认。</p>
           <dl>
             <dt>修复</dt>
-            <dd>用户触发停止即开始独立计时，让停止请求优先于在途准备与播放请求。在期限内辨别已确认与未确认，重连后只响应当前会话。</dd>
+            <dd>用户触发停止即开始独立计时。在期限内给出反馈，同时保持设备指令的安全顺序。</dd>
             <dt>验收</dt>
             <dd>在 v2/v3 模拟正常、慢回执和无回执下，同一时间线记录操作、发送、回执与界面。1.5 秒内确认或明确提示未确认。用真机复核物理停止。</dd>
           </dl>
@@ -188,7 +188,7 @@
     <section id="parallel" aria-labelledby="parallel-title">
       <div class="section-head">
         <h2 id="parallel-title">并行修复清单</h2>
-        <p>表内按建议顺序排列。8K 拖动和长时变慢先做分段测量，再确定改动位置。</p>
+        <p>首批桌面、服务端和 Web 修复已提交。定向测试已验证蓝牙停止提示、Intiface 重连、编辑器连点和部分文案。真机与发布环境验收仍待完成。</p>
       </div>
       <div class="group">
         <table>
