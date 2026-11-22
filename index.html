@@ -131,7 +131,7 @@
       <aside class="release" aria-label="发布状态与候选">
         <strong>暂缓封板</strong>
         <p>桌面版本 · 公开计划</p>
-        <p><time datetime="2026-11-22">2026-11-22</time> · 播放器拖动与错误提示已更新</p>
+        <p><time datetime="2026-11-22">2026-11-22</time> · 桌面与服务端接口反馈已更新</p>
       </aside>
     </div>
   </header>
@@ -139,6 +139,7 @@
     <div class="wrap">
       <a href="#blockers">封板阻断</a>
       <a href="#device-link-followup">设备修复</a>
+      <a href="#desktop-service-contracts">桌面错误与接口反馈</a>
       <a href="#player-drag-and-errors">播放器拖动与错误提示</a>
       <a href="#mix-scrub-and-resize">混剪拖动与出帧</a>
       <a href="#interaction-and-web-errors">交互与旧 Web 文案</a>
@@ -217,6 +218,18 @@
           <tr><th scope="row">实际设备</th><td data-label="修复">停止仍以回执确认。</td><td data-label="证据范围">实体 Wi-Fi、蓝牙和物理停止待验收。</td></tr>
         </tbody>
       </table>
+    </section>
+
+    <section id="desktop-service-contracts" aria-labelledby="desktop-service-contracts-title">
+      <div class="section-head">
+        <h2 id="desktop-service-contracts-title">桌面错误与接口反馈</h2>
+        <p>旧台账中 97 个非遥测错误码都有对应的提示，本批补齐 92 个。</p>
+      </div>
+      <ul>
+        <li>上传过期、任务名称被拒、视频过大和设备配置错误分别说明可采取的动作。</li>
+        <li>新桌面能区分本地生成需要重新登录和普通令牌过期，旧客户端仍能读原响应。</li>
+        <li>11 类已核实的任务和设备输入错误返回对应的 4xx，原错误码随响应保留。</li>
+      </ul>
     </section>
 
     <section id="player-drag-and-errors" aria-labelledby="player-drag-and-errors-title">
