@@ -208,7 +208,7 @@
     <section id="device-link-followup" aria-labelledby="device-link-followup-title">
       <div class="section-head">
         <h2 id="device-link-followup-title">设备掉线、重连与错误提示</h2>
-        <p>处理 6 条既有设备问题和 2 条配置问题。封板状态仍为暂缓。</p>
+        <p>已修复 6 条设备问题和 2 条配置问题，另有 1 条配置修复待合入。</p>
       </div>
       <table>
         <thead><tr><th scope="col">范围</th><th scope="col">修复</th><th scope="col">证据范围</th></tr></thead>
@@ -219,6 +219,7 @@
           <tr><th scope="row">断开超时</th><td data-label="修复">等候五秒后显示断开未确认。清理继续等待回执，设备输出保持关闭。</td><td data-label="证据范围">受控延迟和真实桌面界面。</td></tr>
           <tr><th scope="row">Lovense 发布配置</th><td data-label="修复">源码移除测试凭据默认值，配置检查保护两类生产节点。</td><td data-label="证据范围">已验证源码与配置检查，生产实际状态待验收。</td></tr>
           <tr><th scope="row">开发加密配置</th><td data-label="修复">开发配置改为从环境取值，和其他环境使用同一配置方式。</td><td data-label="证据范围">定向配置检查通过。已发放凭据的轮换仍待确认。</td></tr>
+          <tr><th scope="row">支持请求配置</th><td data-label="修复">取消公开的默认值，使用独立配置值计算重复请求。</td><td data-label="证据范围">候选的定向检查通过，待环境配置后合入。</td></tr>
           <tr><th scope="row">实际设备</th><td data-label="修复">停止仍以回执确认。</td><td data-label="证据范围">实体 Wi-Fi、蓝牙和物理停止待验收。</td></tr>
         </tbody>
       </table>
