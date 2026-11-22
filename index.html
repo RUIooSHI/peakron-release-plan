@@ -131,7 +131,7 @@
       <aside class="release" aria-label="发布状态与候选">
         <strong>暂缓封板</strong>
         <p>桌面版本 · 公开计划</p>
-        <p><time datetime="2026-11-22">2026-11-22</time> · 接口反馈与播放器跳转已更新</p>
+        <p><time datetime="2026-11-22">2026-11-22</time> · 模型下载和视频来源提示已更新</p>
       </aside>
     </div>
   </header>
@@ -224,12 +224,14 @@
     <section id="desktop-service-contracts" aria-labelledby="desktop-service-contracts-title">
       <div class="section-head">
         <h2 id="desktop-service-contracts-title">桌面错误与接口反馈</h2>
-        <p>旧台账中 97 个非遥测错误码都有对应的提示，本批补齐 92 个。</p>
+        <p>此前核对的 97 个非遥测错误码都有对应提示。</p>
       </div>
       <ul>
         <li>上传过期、任务名称被拒、视频过大和设备配置错误分别说明可采取的动作。</li>
         <li>新桌面能区分本地生成需要重新登录和普通令牌过期，旧客户端仍能读原响应。</li>
         <li>11 类已核实的任务和设备输入错误返回对应的 4xx，原错误码随响应保留。</li>
+        <li>模型和 GPU 运行时下载可区分权限、限流、组件缺失和服务暂不可用。</li>
+        <li>使用已退役的视频链接时，桌面提示选择本地视频。Worker 使用明确的失效原因判断何时结束任务执行。</li>
       </ul>
     </section>
 
@@ -240,7 +242,7 @@
       </div>
       <ul>
         <li>三组各六次同素材对照中，应用的目标帧 p95 为 17–31 毫秒。基线每组刷新资料库 6 次，候选为 0 次。</li>
-        <li>当前 VFR 方向键场景仍高于掉帧门槛，继续保留这条记录。</li>
+        <li>VFR 向后跳转仍有掉帧。同一播放器绕过快捷键直接定位时，也发现 Chromium 跳过已解码帧。</li>
       </ul>
     </section>
 
