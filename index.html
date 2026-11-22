@@ -139,6 +139,7 @@
     <div class="wrap">
       <a href="#blockers">封板阻断</a>
       <a href="#device-link-followup">设备修复</a>
+      <a href="#model-reopen">模型与生成恢复</a>
       <a href="#bounded-waits">等待超时</a>
       <a href="#known-followup">后续修复</a>
       <a href="#known-fixes">此前修复</a>
@@ -204,6 +205,17 @@
           <tr><th scope="row">实际设备</th><td data-label="修复">停止仍以回执确认。</td><td data-label="证据范围">实体 Wi-Fi、蓝牙和物理停止待验收。</td></tr>
         </tbody>
       </table>
+    </section>
+
+    <section id="model-reopen" aria-labelledby="model-reopen-title">
+      <div class="section-head">
+        <h2 id="model-reopen-title">模型重开与生成恢复</h2>
+      </div>
+      <ul>
+        <li>重开后恢复显示已安装模型的 Neural Engine 编译状态。</li>
+        <li>提交或重试云端任务时保留本地下载的暂停状态。</li>
+        <li>Core 重启后继续核对最终结果和扣费，减少对同一失败的重复记录。</li>
+      </ul>
     </section>
 
     <section id="bounded-waits" aria-labelledby="bounded-waits-title">
