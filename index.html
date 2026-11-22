@@ -227,7 +227,7 @@
           <tr><th scope="row">生产 API 版本漂移</th><td data-label="修复">每日检查使用同一个预期版本对照主、备 API 节点。</td><td data-label="证据范围">四组隔离场景通过，规则已合入。两台运行版本仍待对齐。</td></tr>
           <tr><th scope="row">开发旧上传配置</th><td data-label="修复">定向迁移已合入，可独立移除旧路由与参数。</td><td data-label="证据范围">原配置快照与回滚验证通过，开发主机只读预检通过，待正式应用。</td></tr>
           <tr><th scope="row">主节点上传发布</th><td data-label="修复">新上传版本先校验主节点的现有上传配置，再安装和迁移。</td><td data-label="证据范围">四组隔离场景通过，规则已合入。生产上传切换仍待现场处置。</td></tr>
-          <tr><th scope="row">开发模型分发</th><td data-label="修复">增加独立配置入口，沿用已有分发设置。</td><td data-label="证据范围">11 项隔离检查通过。旧服务退役留待现场验证。</td></tr>
+          <tr><th scope="row">开发模型分发</th><td data-label="修复">增加独立配置入口，沿用已有分发设置。</td><td data-label="证据范围">11 项隔离检查通过。退役步骤已合入，保留桌面模型分发。隔离回滚和开发主机只读预检通过，待正式应用。</td></tr>
           <tr><th scope="row">实际设备</th><td data-label="修复">停止仍以回执确认。</td><td data-label="证据范围">Handy v3 Wi-Fi 已记录三次画面冻结至滑块稳定，约 67、933、1400 毫秒。射频掉线、按键到停稳及重复样本仍待验收。</td></tr>
         </tbody>
       </table>
