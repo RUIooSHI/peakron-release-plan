@@ -188,7 +188,7 @@
     <section id="parallel" aria-labelledby="parallel-title">
       <div class="section-head">
         <h2 id="parallel-title">并行修复清单</h2>
-        <p>第二批桌面和 Web 文案已提交并通过定向验证，覆盖设备提示、桌面登录、云端阶段与脚本操作。8K VR 拖动正在复测。</p>
+        <p>第二批桌面和 Web 文案已提交并通过定向验证。8K VR 拖动的画面反馈改善，绝对延迟仍超封板门槛。</p>
       </div>
       <div class="group">
         <table>
@@ -212,9 +212,9 @@
               <td data-label="验收">在同坐标单击与双击回归里均只保存一次，活动版本和草稿节点均与预期一致。复测此前新增的 2037 ms 节点。</td>
             </tr>
             <tr>
-              <th scope="row">8K VR 拖动与长时变慢 <span class="minor">B-002 · 待定位</span></th>
-              <td data-label="拟改动">分别量输入到请求、请求到呈现首帧、测试断言耗时。交替采集应用和同内核原生对照，用短窗口检查首段与后段差异。</td>
-              <td data-label="验收">已缓冲首帧 p95 目标为 150 ms 以内，且在原生对照的 1.5 倍以内。首批修复后测得应用 201.6 ms、原生 59.5 ms，各 20 个样本。仍超线。</td>
+              <th scope="row">8K VR 拖动 <span class="minor">B-002 · 绝对门槛未通过</span></th>
+              <td data-label="改动">合并拖动途中的跳转请求，松手仍跳到准确位置。画面更新中位数由每秒 0.33 帧提高到 10.99 帧。</td>
+              <td data-label="验收">同素材、同落点，三组各 24 个样本。已缓冲首帧 p95 为改动前 171.2 ms、改动后 185.0 ms、原生对照 211.1 ms。相对门槛通过，150 ms 绝对门槛未通过。松手到目标帧 p95 从 147.1 ms 到 143.0 ms。</td>
             </tr>
             <tr>
               <th scope="row">窄屏布局与可达性 <span class="minor">A3 / F2</span></th>
