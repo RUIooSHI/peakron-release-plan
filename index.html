@@ -131,7 +131,7 @@
       <aside class="release" aria-label="发布状态与候选">
         <strong>暂缓封板</strong>
         <p>桌面版本 · 公开计划</p>
-        <p><time datetime="2026-11-22">2026-11-22</time> · 本批修复 2 条，复核关闭 2 条</p>
+        <p><time datetime="2026-11-22">2026-11-22</time> · 播放器拖动与错误提示已更新</p>
       </aside>
     </div>
   </header>
@@ -139,6 +139,7 @@
     <div class="wrap">
       <a href="#blockers">封板阻断</a>
       <a href="#device-link-followup">设备修复</a>
+      <a href="#player-drag-and-errors">播放器拖动与错误提示</a>
       <a href="#mix-scrub-and-resize">混剪拖动与出帧</a>
       <a href="#interaction-and-web-errors">交互与旧 Web 文案</a>
       <a href="#local-generation-progress">本地生成进度</a>
@@ -216,6 +217,18 @@
           <tr><th scope="row">实际设备</th><td data-label="修复">停止仍以回执确认。</td><td data-label="证据范围">实体 Wi-Fi、蓝牙和物理停止待验收。</td></tr>
         </tbody>
       </table>
+    </section>
+
+    <section id="player-drag-and-errors" aria-labelledby="player-drag-and-errors-title">
+      <div class="section-head">
+        <h2 id="player-drag-and-errors-title">播放器拖动与错误提示</h2>
+        <p>播放中拖动只保留最新的画面定位。账单服务和上传恢复错误已有对应提示。</p>
+      </div>
+      <ul>
+        <li>同一台 Mac 上，4K 原片达到每秒 17–20 个目标画面，8K 短关键帧副本达到 19–21 个。8K 原片仍只有 5–6 个，适合切换到顺滑播放副本。</li>
+        <li>账单或支持服务出错时显示相应的恢复提示。已上传、上传恢复失败、清理失败和上传状态变更分别说明。</li>
+        <li>原先的 HEVC 未缓冲相对超线没有同类原生样本，已撤销该项比较结论。</li>
+      </ul>
     </section>
 
     <section id="mix-scrub-and-resize" aria-labelledby="mix-scrub-and-resize-title">
