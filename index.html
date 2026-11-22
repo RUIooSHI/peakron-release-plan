@@ -139,6 +139,7 @@
     <div class="wrap">
       <a href="#blockers">封板阻断</a>
       <a href="#device-link-followup">设备修复</a>
+      <a href="#bounded-waits">等待超时</a>
       <a href="#known-followup">后续修复</a>
       <a href="#known-fixes">此前修复</a>
       <a href="#parallel">并行修复</a>
@@ -203,6 +204,16 @@
           <tr><th scope="row">实际设备</th><td data-label="修复">停止仍以回执确认。</td><td data-label="证据范围">实体 Wi-Fi、蓝牙和物理停止待验收。</td></tr>
         </tbody>
       </table>
+    </section>
+
+    <section id="bounded-waits" aria-labelledby="bounded-waits-title">
+      <div class="section-head">
+        <h2 id="bounded-waits-title">安装更新与 Neural Engine 等待超时</h2>
+      </div>
+      <ul>
+        <li>安装器接手后等候 60 秒仍未重启时，显示重启未确认和重新打开应用的说明。</li>
+        <li>Neural Engine 连续 20 分钟无进展时撤下转圈，提示 GPU 可用，并继续等待真实编译结果。</li>
+      </ul>
     </section>
 
     <section id="known-followup" aria-labelledby="known-followup-title">
