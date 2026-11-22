@@ -131,7 +131,7 @@
       <aside class="release" aria-label="发布状态与候选">
         <strong>暂缓封板</strong>
         <p>桌面版本 · 公开计划</p>
-        <p><time datetime="2026-11-22">2026-11-22</time> · 本批处理 4 条设备旧记录</p>
+        <p><time datetime="2026-11-22">2026-11-22</time> · 本批修复 4 条既有记录</p>
       </aside>
     </div>
   </header>
@@ -139,6 +139,7 @@
     <div class="wrap">
       <a href="#blockers">封板阻断</a>
       <a href="#device-link-followup">设备修复</a>
+      <a href="#interaction-and-web-errors">交互与旧 Web 文案</a>
       <a href="#local-generation-progress">本地生成进度</a>
       <a href="#cloud-upload-recovery">云端上传恢复</a>
       <a href="#account-capabilities">账号重连</a>
@@ -214,6 +215,19 @@
           <tr><th scope="row">实际设备</th><td data-label="修复">停止仍以回执确认。</td><td data-label="证据范围">实体 Wi-Fi、蓝牙和物理停止待验收。</td></tr>
         </tbody>
       </table>
+    </section>
+
+    <section id="interaction-and-web-errors" aria-labelledby="interaction-and-web-errors-title">
+      <div class="section-head">
+        <h2 id="interaction-and-web-errors-title">编辑器、播放器与旧 Web 提示</h2>
+        <p>三条桌面交互问题和一条旧 Web 错误提示已修复。</p>
+      </div>
+      <ul>
+        <li>拖动节点时保留热图，松手后刷新。1440 px 的拖动已验证，窄窗口有静态截图。</li>
+        <li>撤销时工具栏和状态栏的四处目标位置保持稳定。复现中工具栏原先移动 106 px，修复后为 0 px。</li>
+        <li>快速跳转时页脚保持稳定。持续等待才显示缓冲，设备停止相关提示仍即时显示。</li>
+        <li>旧 Web 的 12 个已知错误码有对应的用户提示。30 项定向检查通过，实际部署产物待验收。</li>
+      </ul>
     </section>
 
     <section id="local-generation-progress" aria-labelledby="local-generation-progress-title">
