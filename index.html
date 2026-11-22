@@ -485,8 +485,8 @@
           <tbody>
             <tr>
               <th scope="row">设备恢复与提示 <span class="minor">I-R02 / I-R03 / I-R04</span></th>
-              <td data-label="拟改动">媒体错误时保留停止信息和可用的恢复入口。修复 Intiface 新会话建立，UDP 按通道可观测的证据显示连接状态。</td>
-              <td data-label="验收">媒体出错后仍可重试停止。Intiface 的 Connect 和 Resume sync 均建立新会话，旧回执无法结算新请求。UDP 模拟全丢时，界面在本地通道约定时限内如实提示。</td>
+              <td data-label="拟改动">媒体错误时保留停止信息和可用的恢复入口。Intiface 两个重连入口已通过桌面定向验证。UDP 按通道可观测的证据显示连接状态。</td>
+              <td data-label="验收">媒体出错后仍可重试停止。Intiface 的 Connect 建立新会话并保持输出关闭。Resume sync 等待新会话的停止回执，再恢复输出。跨会话旧回执已通过协议单测。UDP 模拟全丢时，界面在本地通道约定时限内如实提示。</td>
             </tr>
             <tr>
               <th scope="row">云端暂停、取消及名额 <span class="minor">C-006 / C-007 / C-010 · 源码已验证</span></th>
