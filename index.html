@@ -188,7 +188,7 @@
     <section id="parallel" aria-labelledby="parallel-title">
       <div class="section-head">
         <h2 id="parallel-title">并行修复清单</h2>
-        <p>本轮 5 项已修复并通过定向复测，涵盖启动登录、两处布局和两项基线测试。跨平台和实体设备继续按封板验收登记。</p>
+        <p>五项定向修复和两处小窗遮挡已通过复测。跨平台和实体设备继续按封板验收登记。</p>
       </div>
       <div class="group">
         <table>
@@ -225,6 +225,11 @@
               <th scope="row">启动时刷新未返回 <span class="minor">已通过</span></th>
               <td data-label="改动">应用先打开主窗口，登录恢复期间可进入图库。需要账号的功能显示正在连接。</td>
               <td data-label="验收">冷启动测试中刷新仍挂起时主窗口已经就绪。503 重试、401 清理和退出保存轮换凭据均通过。</td>
+            </tr>
+            <tr>
+              <th scope="row">小窗遮挡 <span class="minor">A3-007 / F01 · 已复验</span></th>
+              <td data-label="改动">详情层移到左侧栏上方，小窗收起顶栏品牌标识，为导航图标留出空间。</td>
+              <td data-label="验收">384 CSS px 验证详情标题、正文和导航。详情菜单与键盘操作复测通过。</td>
             </tr>
             <tr>
               <th scope="row">基线测试 <span class="minor">两项已通过</span></th>
