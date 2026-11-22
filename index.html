@@ -500,8 +500,8 @@
             </tr>
             <tr>
               <th scope="row">8K VR 拖动 <span class="minor">B-002 / B-012 · 原片仍待达标</span></th>
-              <td data-label="改动">播放器可选临时播放副本。macOS 保留 8K，Linux 和 Windows 提供 4K 兼容版。暂停时可切回原片并保留时间点。</td>
-              <td data-label="验收">Mac 原片每秒 8.98–9.68 张目标画面。当前开发构建在模拟 x64 的 Ubuntu 环境显示了正确的松手目标，原片连续拖动每秒 6.26–6.48 张。两者仍低于每秒 10 张。Mac 副本 24 次松手后首帧在 150 ms 内。实体 Linux x64 和包含后续改动的 Windows 安装包仍待验收。</td>
+              <td data-label="改动">暂停时长按方向键会合并待处理的跳转，松键提交最终位置。播放器仍可选择临时播放副本，macOS 保留 8K，Linux 和 Windows 提供 4K 兼容版。</td>
+              <td data-label="验收">Mac 长按四轮的目标画面从 8 张增至 23 张。模拟 x64 的 Ubuntu 已通过长按定向验证。Mac 原片往返拖动每秒 9.14–9.81 张，低于 10 张门槛。分段跟踪显示大部分时间花在播放管线清理和软件解码。Windows 测试机当次不可达，实际平台验收待补。</td>
             </tr>
             <tr>
               <th scope="row">设备提示与混剪来源 <span class="minor">A3-009 / A3-010 · 已通过</span></th>
