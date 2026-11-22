@@ -346,7 +346,7 @@
         <h2 id="cloud-upload-recovery-title">中断后的云端上传</h2>
         <p>重开后继续原上传。用户取消时，服务端清理完成后才结束任务。测试覆盖收据丢失和清理暂时失败。</p>
       </div>
-      <p>代理连接在握手期间断开时，上传会等待网络并走原有重试流程。11 项定向检查通过，现场断网与计费仍待验收。</p>
+      <p>已修复代理握手断开时的错误分类。本机 Core 验证了上传中断网 30 秒，恢复后完成原任务，测试 API 只受理一次生成提交。现场上传和计费仍待验收。</p>
     </section>
 
     <section id="account-capabilities" aria-labelledby="account-capabilities-title">
