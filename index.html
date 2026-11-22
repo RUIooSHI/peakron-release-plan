@@ -131,13 +131,14 @@
       <aside class="release" aria-label="发布状态与候选">
         <strong>暂缓封板</strong>
         <p>桌面版本 · 公开计划</p>
-        <p><time datetime="2026-11-22">2026-11-22</time> · 本批再处理 8 条旧记录</p>
+        <p><time datetime="2026-11-22">2026-11-22</time> · 本批处理 4 条设备旧记录</p>
       </aside>
     </div>
   </header>
   <nav aria-label="计划章节">
     <div class="wrap">
       <a href="#blockers">封板阻断</a>
+      <a href="#device-link-followup">设备修复</a>
       <a href="#known-followup">后续修复</a>
       <a href="#known-fixes">此前修复</a>
       <a href="#parallel">并行修复</a>
@@ -185,6 +186,23 @@
           </dl>
         </article>
       </div>
+    </section>
+
+    <section id="device-link-followup" aria-labelledby="device-link-followup-title">
+      <div class="section-head">
+        <h2 id="device-link-followup-title">设备掉线、重连与错误提示</h2>
+        <p>处理 5 条既有设备问题和 1 条生产配置问题。封板状态仍为暂缓。</p>
+      </div>
+      <table>
+        <thead><tr><th scope="col">范围</th><th scope="col">修复</th><th scope="col">证据范围</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">掉线与重连</th><td data-label="修复">掉线时撤下已连接状态。重连核对设备连接，输出保持关闭。</td><td data-label="证据范围">模拟设备读数、桌面界面和停止回执断言。</td></tr>
+          <tr><th scope="row">失败提示</th><td data-label="修复">区分连接、测试、停止及清理失败。厂商错误留在诊断，界面说明用户可采取的动作。</td><td data-label="证据范围">设备会话、厂商响应及范围恢复测试。</td></tr>
+          <tr><th scope="row">断开超时</th><td data-label="修复">等候五秒后显示断开未确认。清理继续等待回执，设备输出保持关闭。</td><td data-label="证据范围">受控延迟和真实桌面界面。</td></tr>
+          <tr><th scope="row">Lovense 发布配置</th><td data-label="修复">源码移除测试凭据默认值，配置检查保护两类生产节点。</td><td data-label="证据范围">已验证源码与配置检查，生产实际状态待验收。</td></tr>
+          <tr><th scope="row">实际设备</th><td data-label="修复">停止仍以回执确认。</td><td data-label="证据范围">实体 Wi-Fi、蓝牙和物理停止待验收。</td></tr>
+        </tbody>
+      </table>
     </section>
 
     <section id="known-followup" aria-labelledby="known-followup-title">
