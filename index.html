@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Peakron 封板修复计划</title>
+  <style>
+    :root {
+      --ink: #182331;
+      --muted: #505f70;
+      --line: #dce3e9;
+      --page: #f4f6f8;
+      --paper: #fff;
+      --blue: #155080;
+      --navy: #152937;
+      --rust: #90392b;
+      --alert: #fff0e8;
+      --soft: #eaf1f7;
+      font: 16px/1.65 system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-padding-top: 4rem; }
+    body { margin: 0; background: var(--page); color: var(--ink); }
+    a { color: var(--blue); text-underline-offset: .18em; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid #487caf; outline-offset: 4px; }
+    p { margin: 0; }
+    h1, h2, h3 { margin: 0; line-height: 1.28; }
+    code { overflow-wrap: anywhere; font-size: .9em; }
+    .wrap { width: min(72rem, calc(100% - 3rem)); margin-inline: auto; }
+    .masthead { color: white; background: var(--navy); padding: clamp(1.8rem, 4vw, 3.7rem) 0; }
+    .masthead .wrap { display: grid; align-items: end; gap: 1.5rem; grid-template-columns: minmax(0, 1fr) auto; }
+    .brand { display: block; margin-bottom: .55rem; color: #b9cad8; font-size: .92rem; font-weight: 650; }
+    h1 { font-size: clamp(2rem, 4.8vw, 3.45rem); letter-spacing: -.035em; }
+    .intro { margin-top: 1rem; color: #dae5ee; max-width: 52ch; }
+    .release { border-left: 1px solid #526574; padding-left: 1.25rem; min-width: 12rem; }
+    .release strong { display: block; color: #ffd9c8; font-size: 1.14rem; }
+    .release p { margin-top: .3rem; color: #dae5ee; font-size: .9rem; }
+    nav { position: sticky; top: 0; z-index: 1; background: var(--paper); border-bottom: 1px solid var(--line); }
+    nav .wrap { display: flex; flex-wrap: wrap; gap: .2rem 1.2rem; padding-block: .65rem; }
+    nav a { font-size: .92rem; text-decoration: none; font-weight: 650; padding: .2rem 0; }
+    nav a:hover { text-decoration: underline; }
+    main { padding-bottom: 2.7rem; }
+    section { margin-top: 2.4rem; }
+    .section-head { margin-bottom: .9rem; }
+    .section-head h2 { font-size: clamp(1.38rem, 3vw, 1.8rem); }
+    .section-head p { color: var(--muted); margin-top: .35rem; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .card, .group, .note {
+      background: var(--paper); border: 1px solid var(--line); border-radius: .65rem;
+    }
+    .card { position: relative; padding: 1rem 1.1rem 1.15rem; border-top: 3px solid #b2533c; }
+    .card h3 { font-size: 1.16rem; margin-block: .35rem .65rem; }
+    .id { color: var(--rust); font-weight: 750; font-size: .83rem; }
+    .fact { background: var(--alert); color: #6d2c22; padding: .58rem .68rem; border-radius: .28rem; font-size: .92rem; }
+    dl { margin: .65rem 0 0; }
+    dt { font-size: .83rem; font-weight: 750; color: var(--muted); margin-top: .65rem; }
+    dd { margin: .14rem 0 0; }
+    .links { display: flex; flex-wrap: wrap; gap: .2rem .65rem; margin-top: .7rem; font-size: .88rem; }
+    .group { overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { padding: .8rem .9rem; vertical-align: top; }
+    thead { background: var(--soft); color: #29475f; }
+    th { font-size: .9rem; font-weight: 700; }
+    tbody tr + tr { border-top: 1px solid var(--line); }
+    tbody th[scope="row"] { width: 23%; }
+    td:nth-child(2) { width: 33%; }
+    .minor { display: block; color: var(--muted); font-size: .83rem; margin-top: .1rem; }
+    .subgrid { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+    .note { padding: .8rem .95rem; }
+    summary { color: var(--ink); font-weight: 720; cursor: pointer; }
+    details p { margin-top: .45rem; }
+    .copy-cases { margin-top: 1rem; display: grid; gap: .6rem; }
+    .copy-cases details { padding: .75rem .9rem; }
+    .copy-cases .group { margin-top: .65rem; }
+    .copy-cases th:first-child { width: 6.5rem; }
+    .copy-cases td:nth-child(2) { width: 43%; }
+    .copy-cases summary .minor { display: inline; margin-left: .3rem; }
+    .copy-cases td { font-size: .92rem; }
+    .copy-status { display: block; color: var(--muted); font-size: .78rem; font-weight: 450; }
+    .copy-opening { margin-bottom: .9rem; }
+    .copy-opening strong { color: var(--ink); }
+    .copy-opening p + p { margin-top: .45rem; }
+    .copy-related { margin-top: 1rem; }
+    .note ul, .sequence { margin: .45rem 0 .15rem; padding-left: 1.25rem; }
+    li + li { margin-top: .32rem; }
+    footer { border-top: 1px solid var(--line); padding: 1rem 0 1.6rem; font-size: .88rem; color: var(--muted); }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: .35rem 1.1rem; }
+    @media (max-width: 51rem) {
+      .grid { grid-template-columns: 1fr; }
+      .card { padding: .9rem 1rem; }
+    }
+    @media (max-width: 37rem) {
+      html { scroll-padding-top: 6rem; }
+      .wrap { width: calc(100% - 1.5rem); }
+      .masthead .wrap, .subgrid { grid-template-columns: 1fr; }
+      .release { border: 0; padding-left: 0; }
+      table, tbody, tr, th[scope="row"], td { display: block; }
+      thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+      td, tbody th[scope="row"], td:nth-child(2) { width: auto; }
+      .copy-cases th:first-child, .copy-cases td:nth-child(2) { width: auto; }
+      tbody th, tbody td { padding: .35rem .85rem; }
+      tbody th { padding-top: .8rem; }
+      tbody td:last-child { padding-bottom: .8rem; }
+      td::before { content: attr(data-label); display: block; font-size: .8rem; font-weight: 750; color: var(--muted); }
+    }
+    @media print {
+      body { background: #fff; font-size: 11pt; }
+      .wrap { width: 100%; }
+      .masthead { background: white; color: var(--ink); padding: 0; }
+      .masthead .wrap { display: block; }
+      .brand, .intro, .release strong, .release p { color: var(--ink); }
+      .release { border: 0; padding: 0; margin-top: .5rem; }
+      nav { display: none; }
+      .grid, .subgrid { display: block; }
+      .card, .note { margin-top: .5rem; break-inside: avoid; }
+      tr { break-inside: avoid; }
+      section { margin-top: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <div>
+        <span class="brand">Peakron · 发布评审</span>
+        <h1>封板修复计划</h1>
+        <p class="intro">先处理两项设备停止问题。设备恢复、云端任务、交互和文案分别推进，最后用同一候选包核验。</p>
+      </div>
+      <aside class="release" aria-label="发布状态与候选">
+        <strong>暂缓封板</strong>
+        <p>桌面版本 · 公开计划</p>
+        <p><time datetime="2026-11-21">2026-11-21</time> · 待评审</p>
+      </aside>
+    </div>
+  </header>
+  <nav aria-label="计划章节">
+    <div class="wrap">
+      <a href="#blockers">封板阻断</a>
+      <a href="#parallel">并行修复</a>
+      <a href="#copy">文案修复 · 47 条</a>
+      <a href="#verification">复验与签收</a>
+      
+    </div>
+  </nav>
+  <main class="wrap">
+    <section id="blockers" aria-labelledby="blockers-title">
+      <div class="section-head">
+        <h2 id="blockers-title">封板阻断与当前安排</h2>
+        <p>两项设备问题共享停止状态的验收。发布配置复核暂缓。</p>
+      </div>
+      <div class="grid">
+        <article class="card" id="handy-stop">
+          <p class="id">A1-001 · 桌面设备</p>
+          <h3>Handy 停止反馈超时</h3>
+          <p class="fact">六个虚拟用例均超出 1.5 秒。观测到 8、16、43 秒才提示停止未确认。</p>
+          <dl>
+            <dt>修复</dt>
+            <dd>用户触发停止即开始独立计时，让停止请求优先于在途准备与播放请求。在期限内辨别已确认与未确认，重连后只响应当前会话。</dd>
+            <dt>验收</dt>
+            <dd>在 v2/v3 模拟正常、慢回执和无回执下，同一时间线记录操作、发送、回执与界面。1.5 秒内确认或明确提示未确认。用真机复核物理停止。</dd>
+          </dl>
+        </article>
+        <article class="card" id="ble-stop">
+          <p class="id">I-R01 / F2-01 · 桌面播放与设备</p>
+          <h3>蓝牙停止状态误报</h3>
+          <p class="fact">本地提交成功后，播放器显示设备已停止，侧栏同屏显示远端未确认。</p>
+          <dl>
+            <dt>修复</dt>
+            <dd>将本地提交和远端确认作为不同的停止结果，由同一状态驱动播放器与设备侧栏。重试只接收对应会话和请求的确认。</dd>
+            <dt>验收</dt>
+            <dd>仅本地提交、旧会话回执和设备断开时，两处均如实显示未确认。只有对应远端证据到达后才显示已确认，同时覆盖媒体报错后的重试入口。</dd>
+          </dl>
+        </article>
+        <article class="card" id="policy-key">
+          <p class="id">D-008 · 暂缓处理</p>
+          <h3>发布配置复核</h3>
+          <p class="fact">暂缓处理并保留封板阻断记录。</p>
+          <dl>
+            <dt>下次验收</dt>
+            <dd>用待发布桌面包完成发布环境验收，核对策略校验和本地生成入口。</dd>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <section id="parallel" aria-labelledby="parallel-title">
+      <div class="section-head">
+        <h2 id="parallel-title">并行修复清单</h2>
+        <p>表内按建议顺序排列。8K 拖动和长时变慢先做分段测量，再确定改动位置。</p>
+      </div>
+      <div class="group">
+        <table>
+          <thead>
+            <tr><th scope="col">修复项</th><th scope="col">拟改动</th><th scope="col">验收</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">设备恢复与提示 <span class="minor">I-R02 / I-R03 / I-R04</span></th>
+              <td data-label="拟改动">媒体错误时保留停止信息和可用的恢复入口。修复 Intiface 新会话建立，UDP 按通道可观测的证据显示连接状态。</td>
+              <td data-label="验收">媒体出错后仍可重试停止。Intiface 的 Connect 和 Resume sync 均建立新会话，旧回执无法结算新请求。UDP 模拟全丢时，界面在本地通道约定时限内如实提示。</td>
+            </tr>
+            <tr>
+              <th scope="row">云端暂停、取消及名额 <span class="minor">C-006 / C-007 / C-010</span></th>
+              <td data-label="拟改动">先明确生成阶段实际支持的暂停和取消语义，对齐按钮、服务端状态及扣费。给中断上传定义明确的会话释放与重试行为。</td>
+              <td data-label="验收">用隔离 dev 账号比对界面、任务、积分和实例。已受理的操作按约定改变任务及计费；无法受理时保留真实状态和可执行提示。中断上传后的活跃名额可按约定恢复。</td>
+            </tr>
+            <tr>
+              <th scope="row">编辑器保存连点 <span class="minor">H-001 · 已复现</span></th>
+              <td data-label="拟改动">保存确认到关闭的点击序列由对话框完整处理，保存期间只接收一次提交。保留原有失败重试体验。</td>
+              <td data-label="验收">在同坐标单击与双击回归里均只保存一次，活动版本和草稿节点均与预期一致。复测此前新增的 2037 ms 节点。</td>
+            </tr>
+            <tr>
+              <th scope="row">8K VR 拖动与长时变慢 <span class="minor">B-002 · 待定位</span></th>
+              <td data-label="拟改动">分别量输入到请求、请求到呈现首帧、测试断言耗时。交替采集应用和同内核原生对照，用短窗口检查首段与后段差异。</td>
+              <td data-label="验收">同素材和可比负载下，有效样本的已缓冲 p95 ≤ 150 ms，且 ≤ 同类原生 p95 的 1.5 倍。最近测试为应用 290.7 ms、原生 160.9 ms，各 20 个样本。</td>
+            </tr>
+            <tr>
+              <th scope="row">窄屏布局与可达性 <span class="minor">A3 / F2</span></th>
+              <td data-label="拟改动">修正编辑器播放控件、设备选择提示和混剪视频来源的裁切，并检查截图中可能被遮住或折行的操作。</td>
+              <td data-label="验收">在 384、768、1024、1440 CSS 像素核对文字和控件。用滚动与键盘实际验证，确认保存、停止、缩放等操作可达。<div class="links"><a href="#copy">文案单列</a></div></td>
+            </tr>
+            <tr>
+              <th scope="row">启动时刷新未返回 <span class="minor">重启登录的延迟分支</span></th>
+              <td data-label="拟改动">测登录刷新延迟对主窗口出现时间的影响，再确定窗口先显示等待或维持当前启动顺序的上限。</td>
+              <td data-label="验收">正常重启、503 重试、401 清理保持原验证结果。刷新迟迟不返回时，记录窗口出现、用户可见反馈、恢复和关闭的时间线。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="copy" aria-labelledby="copy-title">
+      <div class="section-head">
+        <h2 id="copy-title">文案修复清单</h2>
+        <p>A4 审计记录 47 条，原分级为 P2 11 条、P3 36 条。每条保留原编号，修复前在对应版本确认仍可达。</p>
+      </div>
+      <div class="note copy-opening">
+        <p><strong>首批</strong> 先处理停止提示、错误透传、上传说明与生成阶段。优先复核 <a href="#copy-a4-031">A4-031 的 VR 说明</a>，即用户指出的 Auto / On 讲固定处理方式、读完仍不知道怎么选的问题。</p>
+        <p><strong>候选核对</strong> 已核对 A4-003、004、014 的档位、生成阶段与模型下载按钮，安排按候选界面复测。其余历史记录按可见入口逐条验证。</p>
+      </div>
+      <div class="copy-cases" aria-label="A4 审计逐条修复计划">
+        <details class="note" open>
+          <summary>用户如何选择与数据会去哪 <span class="minor">3 条</span></summary>
+          <p>先拿实际生成链路核实上传与权利条件，再更新选择说明。</p>
+          <div class="group">
+            <table>
+              <thead><tr><th scope="col">编号</th><th scope="col">发现</th><th scope="col">拟改动与验收</th></tr></thead>
+              <tbody>
+                <tr id="copy-a4-031"><th scope="row">A4-031<span class="copy-status">P2 · 候选源码仍见</span></th><td data-label="发现">VR 的 Auto / On 说明讲单眼转换和元数据，用户看不出三种模式的结果。</td><td data-label="拟改动与验收">Auto 写自动识别，On 写按 VR 处理，Off 写按普通视频处理。每种用典型素材验证选项、结果和提示一致。</td></tr>
+                <tr id="copy-a4-008"><th scope="row">A4-008<span class="copy-status">P2 · 历史审计判断</span></th><td data-label="发现">Full video uploaded. 可能让用户以为整份原片已经上传。</td><td data-label="拟改动与验收">在本地、云端和加轴各走一次真实数据链路，确认传输的是分析用视频、特征或其他数据，再准确写明传输对象。</td></tr>
+                <tr id="copy-a4-029"><th scope="row">A4-029<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Local 只写在本机运行，首次需要的大额模型下载没有提前说明。</td><td data-label="拟改动与验收">首次选择时明确需要下载及可核实的大小，区分已安装状态，并验证下载由用户操作触发。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+        <details class="note">
+          <summary>停止、失败与下一步 <span class="minor">8 条</span></summary>
+          <p>先核对每条提示对应的真实状态和当前可用操作。</p>
+          <div class="group">
+            <table>
+              <thead><tr><th scope="col">编号</th><th scope="col">发现</th><th scope="col">拟改动与验收</th></tr></thead>
+              <tbody>
+                <tr id="copy-a4-010"><th scope="row">A4-010<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">停止未确认有多种说法，有的提示指向桌面不存在的按钮。</td><td data-label="拟改动与验收">统一未确认提示，只指向当前界面可用的重试；检查播放器、侧栏与旧 Web。</td></tr>
+                <tr id="copy-a4-033"><th scope="row">A4-033<span class="copy-status">P2 · 历史审计判断</span></th><td data-label="发现">Stop guarantee、Native writes 等协议词遮盖了断线后设备可能未停的事实。</td><td data-label="拟改动与验收">按当前会话证据说明是否确认停止、能否重试。用无远端回执和旧回执验证两处提示一致。</td></tr>
+                <tr id="copy-a4-032"><th scope="row">A4-032<span class="copy-status">P2 · 历史源码证据</span></th><td data-label="发现">多个脚本关联同一视频时禁用播放，只提示 Needs migration。</td><td data-label="拟改动与验收">说明视频有关联多个脚本，并提供实际受支持的处理入口。验证卡片、列表和选择器。</td></tr>
+                <tr id="copy-a4-038"><th scope="row">A4-038<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">速度警告使用 displacement、L0 preset 等量纲或实现名。</td><td data-label="拟改动与验收">标明哪个片段或轴超限、可在哪里调整；用一段超过限制的脚本验收。</td></tr>
+                <tr id="copy-a4-039"><th scope="row">A4-039<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">设备设置和蓝牙失败使用 binding、credential、advertisement 等词。</td><td data-label="拟改动与验收">按连接失败原因给出用户能执行的处理，例如检查设备权限或重新连接。逐个验证对应界面。</td></tr>
+                <tr id="copy-a4-040"><th scope="row">A4-040<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">文件夹同步和脚本清理讲底层文件处理，改动后果难读。</td><td data-label="拟改动与验收">先说明哪些视频或脚本受影响、能否保留或撤销。用新增、缺失和已移动文件分别验收。</td></tr>
+                <tr id="copy-a4-041"><th scope="row">A4-041<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Library identity、Mix state 等内部对象名被用在失败句子中。</td><td data-label="拟改动与验收">写清哪个界面操作失败、原数据是否还在，以及可执行的重试。</td></tr>
+                <tr id="copy-a4-023"><th scope="row">A4-023<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Peakron Web 部分错误句长且含 Please，失败与处理动作往往分散。</td><td data-label="拟改动与验收">先定适用于该 Web 的文案规范，按登录、会话和网络恢复核对。桌面短句规则沿用既有约定。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+        <details class="note">
+          <summary>内部信息透传 <span class="minor">13 条</span></summary>
+          <p>从数据出口检查路径、枚举和原始异常。支持日志保留诊断信息。</p>
+          <div class="group">
+            <table>
+              <thead><tr><th scope="col">编号</th><th scope="col">发现</th><th scope="col">拟改动与验收</th></tr></thead>
+              <tbody>
+                <tr id="copy-a4-001"><th scope="row">A4-001<span class="copy-status">P2 · 历史源码证据</span></th><td data-label="发现">任务卡引擎行直接展示底层回退原因。</td><td data-label="拟改动与验收">把底层原因映射到用户可见的计算状态和可行行动。验证部分回退与完全不可用。</td></tr>
+                <tr id="copy-a4-002"><th scope="row">A4-002<span class="copy-status">P2 · 历史源码证据</span></th><td data-label="发现">本地模型提示出现 R2、release key 或原始消息。</td><td data-label="拟改动与验收">区分下载、校验或访问失败，显示具体可用动作及支持引用。</td></tr>
+                <tr id="copy-a4-015"><th scope="row">A4-015<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">播放器显示 {provenance} capabilities 一类枚举。</td><td data-label="拟改动与验收">仅展示用户需要的设备能力与限制；造含未知枚举的响应复测。</td></tr>
+                <tr id="copy-a4-016"><th scope="row">A4-016<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">OSSM 对话框直接展示固件 mode 和 phase。</td><td data-label="拟改动与验收">把固件状态映射到当前可执行的设置动作；未知值使用可理解提示。</td></tr>
+                <tr id="copy-a4-017"><th scope="row">A4-017<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Neural Engine 不可用时，状态栏 GPU only 后仍可能带核心原文。</td><td data-label="拟改动与验收">检查部分回退、完全不可用两条路径，展示正确的计算方式和短说明。</td></tr>
+                <tr id="copy-a4-018"><th scope="row">A4-018<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">手写失败句拼接 error.message 或 String(error)。</td><td data-label="拟改动与验收">从确切的失败入口接入安全提示映射，验证合成路径、异常名和堆栈不会进普通提示。</td></tr>
+                <tr id="copy-a4-019"><th scope="row">A4-019<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Intiface 映射显示内部 ID、scalar 和通道序号。</td><td data-label="拟改动与验收">使用可辨认的设备名与控制项，保持同名设备或通道可区分。</td></tr>
+                <tr id="copy-a4-024"><th scope="row">A4-024<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">旧 Web 的 Lovense 错误含 PatternV2、control plane 等实现词。</td><td data-label="拟改动与验收">按设备不支持或暂时不可用等用户状态改写，用旧 Web 响应夹具触发原入口。</td></tr>
+                <tr id="copy-a4-030"><th scope="row">A4-030<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Local / Cloud 禁用时使用 capability、desktop build，原因离选择控件远。</td><td data-label="拟改动与验收">在对应选项旁说明禁用原因和下一步，分别验证权限、环境、资源与网络失败。</td></tr>
+                <tr id="copy-a4-042"><th scope="row">A4-042<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">启动错误要求用户寻找内部数据库文件。</td><td data-label="拟改动与验收">用用户认识的图库位置和恢复入口说明；支持详情保留需要的诊断路径。</td></tr>
+                <tr id="copy-a4-043"><th scope="row">A4-043<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">共享校验和主进程含大量内部术语，是否到达界面须逐条追踪。</td><td data-label="拟改动与验收">先找实际可见出口，已确认透传的分支加映射与负例；内部日志保留原解释。</td></tr>
+                <tr id="copy-a4-046"><th scope="row">A4-046<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">视频播放、混剪和刷新等失败句也拼接原始错误。</td><td data-label="拟改动与验收">用素材不可用、混剪加载失败、刷新失败等场景分别触发并检查提示。</td></tr>
+                <tr id="copy-a4-047"><th scope="row">A4-047<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">生成来源行直接显示 Task {status}，原样呈现状态枚举。</td><td data-label="拟改动与验收">使用生成界面共享的状态词，按真实状态显示等待、结束或取消等可执行动作。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+        <details class="note">
+          <summary>状态、进度与按钮作用 <span class="minor">13 条</span></summary>
+          <p>对照同一任务的后台阶段、任务行和状态栏，验证文案反映正在发生的事。</p>
+          <div class="group">
+            <table>
+              <thead><tr><th scope="col">编号</th><th scope="col">发现</th><th scope="col">拟改动与验收</th></tr></thead>
+              <tbody>
+                <tr id="copy-a4-003"><th scope="row">A4-003<span class="copy-status">P2 · 候选源码仍见</span></th><td data-label="发现">桌面选择 Exact，任务行仍可能显示存储名 Balanced。</td><td data-label="拟改动与验收">统一走档位显示映射。用同一个新任务和历史记录核对创建页、筛选和行内容。</td></tr>
+                <tr id="copy-a4-004"><th scope="row">A4-004<span class="copy-status">P2 · 候选源码仍见</span></th><td data-label="发现">排队、准备、推理、返回结果和保存可能共用 Generating stroke。</td><td data-label="拟改动与验收">将任务真实阶段映射到短文案。对照后台事件验证阶段及时切换，未知进度用合适反馈。</td></tr>
+                <tr id="copy-a4-005"><th scope="row">A4-005<span class="copy-status">P2 · 历史源码证据</span></th><td data-label="发现">本地等待 GPU 仍显示 Generating stroke 和 0%。</td><td data-label="拟改动与验收">两项本地任务并行时显示等待状态；拿到资源后再进入生成。</td></tr>
+                <tr id="copy-a4-006"><th scope="row">A4-006<span class="copy-status">P2 · 历史源码证据</span></th><td data-label="发现">旧 Web 任务详情写 Balanced，同一档位在新建和筛选叫 Exact。</td><td data-label="拟改动与验收">同步旧 Web 详情的显示映射，验证同一任务跨页面一致。</td></tr>
+                <tr id="copy-a4-013"><th scope="row">A4-013<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">任务行的 Pause 实际暂停多个任务共享的模型下载。</td><td data-label="拟改动与验收">在按钮和说明中写清共享下载范围，用两项等模型的任务验证。</td></tr>
+                <tr id="copy-a4-014"><th scope="row">A4-014<span class="copy-status">P3 · 候选源码仍见</span></th><td data-label="发现">状态栏模型下载按钮只写 Pause / Resume。</td><td data-label="拟改动与验收">按钮明确写 Pause download / Resume download，可访问名称与可见文字一致。</td></tr>
+                <tr id="copy-a4-021"><th scope="row">A4-021<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">通知标题和任务卡对成功或失败各用不同状态词。</td><td data-label="拟改动与验收">按同一任务类型对齐通知、任务卡与记录。分别核对生成失败、上传失败和已完成。</td></tr>
+                <tr id="copy-a4-025"><th scope="row">A4-025<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Failed 2 / Paused 1 没说是几项什么。</td><td data-label="拟改动与验收">补任务对象与正确单复数，检查一项、多项和窄窗口。</td></tr>
+                <tr id="copy-a4-026"><th scope="row">A4-026<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">本地发送特征时显示 Uploading，易与上传原片混淆。</td><td data-label="拟改动与验收">以实际发送的对象命名阶段，和本地模式的数据说明一起核对。</td></tr>
+                <tr id="copy-a4-034"><th scope="row">A4-034<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">编辑器显示 PERSISTED · REV n 等内部版本状态。</td><td data-label="拟改动与验收">面向用户显示已保存、未保存、正在建立或恢复草稿，确认退出前判断清楚。</td></tr>
+                <tr id="copy-a4-035"><th scope="row">A4-035<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">连接状态使用 Real protocol 和 Script output available，还可能让用户过早以为设备就绪。</td><td data-label="拟改动与验收">用握手、命令反馈和连接探针验证状态，显示真实的可用或重连信息。</td></tr>
+                <tr id="copy-a4-036"><th scope="row">A4-036<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">本地任务等待文案讲编译、重启引擎、已有字节等细节。</td><td data-label="拟改动与验收">按准备、下载、等待恢复展示原因与预计下一步，并校对本地与云端边界。</td></tr>
+                <tr id="copy-a4-037"><th scope="row">A4-037<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Checking components 与 You can start now 同屏，能否继续不清楚。</td><td data-label="拟改动与验收">区分正在检查与可开始，校对按钮状态、回查动作和标签。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+        <details class="note">
+          <summary>跨页面术语与品牌 <span class="minor">10 条</span></summary>
+          <p>先确认同一概念与不同概念的边界，再做批量替换。</p>
+          <div class="group">
+            <table>
+              <thead><tr><th scope="col">编号</th><th scope="col">发现</th><th scope="col">拟改动与验收</th></tr></thead>
+              <tbody>
+                <tr id="copy-a4-007"><th scope="row">A4-007<span class="copy-status">P2 · 历史审计判断</span></th><td data-label="发现">桌面 Peakron 登录后跳到写 PeakSync Desktop 的授权页。</td><td data-label="拟改动与验收">由产品确认授权页的品牌与账户称呼，再跑一遍桌面到浏览器及返回的完整流程。</td></tr>
+                <tr id="copy-a4-009"><th scope="row">A4-009<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">设备停止动作有多种叫法。</td><td data-label="拟改动与验收">按动作语义统一普通停止、紧急停止与重试，确认各入口与实际行为匹配。</td></tr>
+                <tr id="copy-a4-011"><th scope="row">A4-011<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">OSSM 设置叫 Acceleration，相关失败提示叫 sensation。</td><td data-label="拟改动与验收">以用户在设置看到的同一名称描述输入和值；验证非法值错误。</td></tr>
+                <tr id="copy-a4-012"><th scope="row">A4-012<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">同一批下载物在面板、状态栏和失败提示里的名称不同。</td><td data-label="拟改动与验收">为运行组件、分析资源和本地模型逐个确定名称，用下载、暂停、失败三态检查。</td></tr>
+                <tr id="copy-a4-020"><th scope="row">A4-020<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Rhythm 和 Intensity 各用于多个概念。</td><td data-label="拟改动与验收">区分节奏档位与强度设置；核对生成面板、播放和任务历史。</td></tr>
+                <tr id="copy-a4-022"><th scope="row">A4-022<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">authorization 同时指登录审批、设备授权和生成资格。</td><td data-label="拟改动与验收">按对象写登录、设备权限或当前方案可用性，分别造状态确认。</td></tr>
+                <tr id="copy-a4-027"><th scope="row">A4-027<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">同一时间窗口的额度有时叫 quota、有时叫 limit。</td><td data-label="拟改动与验收">保持账页和错误提示用同一额度名，保留周期和恢复条件。</td></tr>
+                <tr id="copy-a4-028"><th scope="row">A4-028<span class="copy-status">P3 · 历史审计判断</span></th><td data-label="发现">Lovense 一处叫 toy，其它地方叫 device。</td><td data-label="拟改动与验收">统一设备称谓，核对连接、断开与故障提示。</td></tr>
+                <tr id="copy-a4-044"><th scope="row">A4-044<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">Library 的大小写和冠词用法混杂。</td><td data-label="拟改动与验收">规定导航项和普通名词的用法，校对入口、导入和错误提示。</td></tr>
+                <tr id="copy-a4-045"><th scope="row">A4-045<span class="copy-status">P3 · 历史源码证据</span></th><td data-label="发现">导航叫 Music Video，页面大量写 MV。</td><td data-label="拟改动与验收">明确首次出现的功能名与简称规则，核对导航、详情及提示。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+      <div class="subgrid copy-related">
+        <details class="note" open>
+          <summary>截图与设备真相</summary>
+          <p>A3-001、003 与原始错误归同批，A3-004、011、012、013 与生成和恢复说明归同批。A3-005 及 F2 盲看的单复数问题统一核对 0、1、2 和多项。设备测试被拒、停止未确认与媒体错误分别造状态，停止文案沿用两项设备阻断的真实状态验收。</p>
+        </details>
+        <details class="note" open>
+          <summary>接口错误与扫漏</summary>
+          <p>先处理 E-020 已追通的旧 Web 删脚本后打开详情。其余 11 个候选码逐一验证可达性。历史 E-007、E-019 对表分别列出桌面 110 个、Peakron Web 7 个缺专属提示的错误码，按登录、设备、生成等高频入口先核对。桌面两轮扫描还有未分类字符串，两个 Web 的对象文案也需补扫。</p>
+        </details>
+      </div>
+      <div class="note copy-related">
+        <strong>文案签收</strong>
+        <p>每个可达问题留下修复前后截图或用户可见文本断言。核对同一状态在任务卡、状态栏和通知的说法，失败提示能指出下一步，普通界面只保留适用的支持引用。变更术语时同步检查窄窗口和键盘可访问名称。</p>
+      </div>
+    </section>
+
+    <section id="verification" aria-labelledby="verification-title">
+      <div class="section-head">
+        <h2 id="verification-title">复验与签收</h2>
+        <p>先复跑改动对应的最短用例，再用同一候选包核对封板门槛。已完成的长跑留档，后续按改动影响决定复验范围。</p>
+      </div>
+      <div class="subgrid">
+        <details class="note" open>
+          <summary>真实设备台架</summary>
+          <p>优先安排 Handy 掉线和 BLE 掉线重连。需要隔离台架、可控断链、已固定且无人接触的设备，以及同一时基的录像或独立动作观测。跨连接旧回执需可控外围设备。逐项记录物理停止、同步及重连证据。</p>
+        </details>
+        <details class="note" open>
+          <summary>状态和控件覆盖</summary>
+          <p>固定分母为 373 个状态和 2,095 个控件，目标分别为 336 与 1,991。通过逐步命中记录补缺口；对受设备、平台或环境限制的项记录实际欠缺条件。</p>
+        </details>
+        <details class="note" open>
+          <summary>回归与真实 dev</summary>
+          <p>关闭 G0 已知失败并核对历史基线。历史回放当前有 9/22 条证据，门槛为 18/22。3 个实际 dev 种子需先核对部署产物、审计账号及预算，再记录任务和实例清理。</p>
+        </details>
+        <details class="note" open>
+          <summary>封板签收顺序</summary>
+          <ol class="sequence">
+            <li>先验证当期两项设备阻断，留候选包、运行版本和前后证据。</li>
+            <li>核对其余门槛与覆盖缺口。需要真机或发布环境的证据明确归属。</li>
+            <li>封板阻断全部关闭、连续两轮无新增 P0/P1 后，由人工复核证据和剩余发现。</li>
+          </ol>
+        </details>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <span>公开版 · 修复顺序为评审建议</span>
+      
+      
+    </div>
+  </footer>
+</body>
+</html>
