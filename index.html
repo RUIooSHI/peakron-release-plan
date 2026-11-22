@@ -131,14 +131,15 @@
       <aside class="release" aria-label="发布状态与候选">
         <strong>暂缓封板</strong>
         <p>桌面版本 · 公开计划</p>
-        <p><time datetime="2026-11-22">2026-11-22</time> · 本轮处理 26 条旧记录</p>
+        <p><time datetime="2026-11-22">2026-11-22</time> · 本批再处理 8 条旧记录</p>
       </aside>
     </div>
   </header>
   <nav aria-label="计划章节">
     <div class="wrap">
       <a href="#blockers">封板阻断</a>
-      <a href="#known-fixes">本轮修复</a>
+      <a href="#known-followup">后续修复</a>
+      <a href="#known-fixes">此前修复</a>
       <a href="#parallel">并行修复</a>
       <a href="#copy">文案修复 · 47 条</a>
       <a href="#verification">复验与签收</a>
@@ -184,6 +185,21 @@
           </dl>
         </article>
       </div>
+    </section>
+
+    <section id="known-followup" aria-labelledby="known-followup-title">
+      <div class="section-head">
+        <h2 id="known-followup-title">已有问题的后续修复</h2>
+        <p>处理 8 条既有记录。定向验证覆盖账户同步、上传中断恢复、任务队列与模型下载。</p>
+      </div>
+      <table>
+        <thead><tr><th scope="col">范围</th><th scope="col">修复结果</th><th scope="col">验证范围</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">账户同步</th><td data-label="修复结果">同步时可在菜单与底栏看到状态。退出中断后可重试，失败提示保留参考号。</td><td data-label="验证范围">桌面界面和重开场景。</td></tr>
+          <tr><th scope="row">云端上传</th><td data-label="修复结果">重开时显示上传中断。连续网络失败后继续等待并重试同一任务。</td><td data-label="验证范围">受控错误及任务记录。开发环境的实际断网和扣费证据待补。</td></tr>
+          <tr><th scope="row">队列与模型下载</th><td data-label="修复结果">区分等待调度和等待取消回执。下载停滞时隐藏旧速度和预计时间。</td><td data-label="验证范围">状态、回执与传输恢复断言。</td></tr>
+        </tbody>
+      </table>
     </section>
 
     <section id="known-fixes" aria-labelledby="known-fixes-title">
