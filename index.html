@@ -241,6 +241,7 @@
       <p>云端任务排队时说明在等可用算力，保留取消入口。桌面验证通过，实际冷启动耗时仍待确认。</p>
       <p>桌面会在提交前检查云端是否受理新任务。受理关闭或检查失败时，界面给出相应提示。</p>
       <p>旧网页提前续期分片上传凭据。两项定向检查验证分片跨过首批凭据期限后仍完成同一上传。</p>
+      <p>上传结束后即使服务中断，清理仍保留已登记的文件。临时上传在凭据到期后清理，失败后会重试。定向验证通过。</p>
     </section>
 
     <section id="desktop-service-contracts" aria-labelledby="desktop-service-contracts-title">
@@ -498,7 +499,7 @@
             </tr>
             <tr>
               <th scope="row">基线测试 <span class="minor">两项已通过</span></th>
-              <td data-label="改动">更新 MV 选段和旧文档的回归，补齐 22 个故障码的排查指引。</td>
+              <td data-label="改动">更新 MV 选段和旧文档的回归，补齐 22 个故障码的排查指引。本机 Rust 测试器已验证准确选中单项用例。</td>
               <td data-label="验收">两项历史失败均通过。本轮共通过 189 项相关单测和 5 项 Electron 场景。</td>
             </tr>
           </tbody>
