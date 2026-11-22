@@ -131,7 +131,7 @@
       <aside class="release" aria-label="发布状态与候选">
         <strong>暂缓封板</strong>
         <p>桌面版本 · 公开计划</p>
-        <p><time datetime="2026-11-22">2026-11-22</time> · 桌面与服务端接口反馈已更新</p>
+        <p><time datetime="2026-11-22">2026-11-22</time> · 接口反馈与播放器跳转已更新</p>
       </aside>
     </div>
   </header>
@@ -140,6 +140,7 @@
       <a href="#blockers">封板阻断</a>
       <a href="#device-link-followup">设备修复</a>
       <a href="#desktop-service-contracts">桌面错误与接口反馈</a>
+      <a href="#player-discrete-seeks">播放器单次跳转</a>
       <a href="#player-drag-and-errors">播放器拖动与错误提示</a>
       <a href="#mix-scrub-and-resize">混剪拖动与出帧</a>
       <a href="#interaction-and-web-errors">交互与旧 Web 文案</a>
@@ -229,6 +230,17 @@
         <li>上传过期、任务名称被拒、视频过大和设备配置错误分别说明可采取的动作。</li>
         <li>新桌面能区分本地生成需要重新登录和普通令牌过期，旧客户端仍能读原响应。</li>
         <li>11 类已核实的任务和设备输入错误返回对应的 4xx，原错误码随响应保留。</li>
+      </ul>
+    </section>
+
+    <section id="player-discrete-seeks" aria-labelledby="player-discrete-seeks-title">
+      <div class="section-head">
+        <h2 id="player-discrete-seeks-title">播放中的单次跳转</h2>
+        <p>无设备播放时，跳转继续保存进度，播放中的每次保存省去资料库刷新。暂停和退出仍会更新资料库。</p>
+      </div>
+      <ul>
+        <li>三组各六次同素材对照中，应用的目标帧 p95 为 17–31 毫秒。基线每组刷新资料库 6 次，候选为 0 次。</li>
+        <li>当前 VFR 方向键场景仍高于掉帧门槛，继续保留这条记录。</li>
       </ul>
     </section>
 
