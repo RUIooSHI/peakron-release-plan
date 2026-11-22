@@ -139,6 +139,7 @@
     <div class="wrap">
       <a href="#blockers">封板阻断</a>
       <a href="#device-link-followup">设备修复</a>
+      <a href="#mix-and-udp">混剪与 UDP</a>
       <a href="#model-reopen">模型与生成恢复</a>
       <a href="#bounded-waits">等待超时</a>
       <a href="#known-followup">后续修复</a>
@@ -205,6 +206,16 @@
           <tr><th scope="row">实际设备</th><td data-label="修复">停止仍以回执确认。</td><td data-label="证据范围">实体 Wi-Fi、蓝牙和物理停止待验收。</td></tr>
         </tbody>
       </table>
+    </section>
+
+    <section id="mix-and-udp" aria-labelledby="mix-and-udp-title">
+      <div class="section-head">
+        <h2 id="mix-and-udp-title">混剪进度条与 UDP 状态</h2>
+      </div>
+      <ul>
+        <li>播放中点击时优先准备当前片段，减少切点前的并行解码。同一 Mac 上用 1080p H.264 素材执行 20 次点击，目标视频槽掉帧率从 1.53% 降至 0.88%，达到 1% 门槛。</li>
+        <li>UDP 明确显示“可以发送”与设备响应未验证。标题栏隐藏内部能力来源。桌面回归验证了三种窗宽，以及重连后手动开启输出。</li>
+      </ul>
     </section>
 
     <section id="model-reopen" aria-labelledby="model-reopen-title">
