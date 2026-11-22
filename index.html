@@ -223,13 +223,13 @@
     <section id="known-fixes" aria-labelledby="known-fixes-title">
       <div class="section-head">
         <h2 id="known-fixes-title">已有问题的定向修复</h2>
-        <p>本批处理 26 条已有审计记录，25 条完成对应修复，1 条完成部分修复。各仓库的源码已按目标分支核对。</p>
+        <p>这批有 26 条已有审计记录，其中 1 条起初只补了进度，后续已补齐单组超时与重试。各仓库源码已按目标分支核对。</p>
       </div>
       <div class="table-wrap">
         <table>
           <thead><tr><th scope="col">范围</th><th scope="col">已处理</th><th scope="col">核对依据</th></tr></thead>
           <tbody>
-            <tr><th scope="row">桌面导入与界面</th><td data-label="已处理">导入写入跨过审阅期限仍可完成，扫描和写入显示进度，文件问题用可读提示。编辑器保留冲突草稿。窄窗内的模型状态和混剪操作保持完整。</td><td data-label="核对依据">桌面界面、集成与类型检查。单组写入挂住后的恢复仍待处理。</td></tr>
+            <tr><th scope="row">桌面导入与界面</th><td data-label="已处理">导入写入跨过审阅期限仍可完成，扫描和写入显示进度，文件问题用可读提示。编辑器保留冲突草稿。窄窗内的模型状态和混剪操作保持完整。</td><td data-label="核对依据">桌面界面、集成与类型检查。单组文件核验超时后进入重试，保留已经导入的内容。</td></tr>
             <tr><th scope="row">桌面账户与设备</th><td data-label="已处理">退出失败可重试退出，更新失败保留提示，播放设备显示完整名称，蓝牙说明区分操作阶段和实际检查时限，取消多轴时说明保留的主轨。</td><td data-label="核对依据">桌面界面及控制端测试。真实无线环境仍待验收。</td></tr>
             <tr><th scope="row">网页、服务端与 Worker</th><td data-label="已处理">网页明确显示验证、警告、过期与取消状态。登录错误和控制面失败保留稳定原因。桌面识别已删除的脚本。</td><td data-label="核对依据">定向组件、接口和日志测试。</td></tr>
           </tbody>
