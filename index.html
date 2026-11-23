@@ -222,12 +222,12 @@
           <tr><th scope="row">断开超时</th><td data-label="修复">等候五秒后显示断开未确认。清理继续等待回执，设备输出保持关闭。</td><td data-label="证据范围">受控延迟和真实桌面界面。</td></tr>
           <tr><th scope="row">Lovense 发布配置</th><td data-label="修复">源码移除测试凭据默认值，配置检查保护两类生产节点。</td><td data-label="证据范围">已验证源码与配置检查，生产实际状态待验收。</td></tr>
           <tr><th scope="row">开发加密配置</th><td data-label="修复">开发配置改为从环境取值，和其他环境使用同一配置方式。</td><td data-label="证据范围">定向配置检查通过。已发放凭据的轮换仍待确认。</td></tr>
-          <tr><th scope="row">支持请求配置</th><td data-label="修复">取消公开的默认值，使用独立配置值计算重复请求。</td><td data-label="证据范围">候选的定向检查通过，待环境配置后合入。</td></tr>
+          <tr><th scope="row">支持请求配置</th><td data-label="修复">已移除公开默认值。有效的专用密钥优先，缺少有效专用密钥时由现有部署密钥派生。保留用户级限额。</td><td data-label="证据范围">服务端 QA 已核对。17 项定向测试及 3 项隔离 Redis 验证通过。运行环境生效待核验。</td></tr>
           <tr><th scope="row">旧环境备份</th><td data-label="修复">已有定向清理入口，每份配置保留一个回滚副本。</td><td data-label="证据范围">三节点只读预检识别 94 份冗余备份。5 项隔离测试通过，现场未删除。</td></tr>
           <tr><th scope="row">环境回滚与 Worker 配置</th><td data-label="修复">每份受管环境文件仅保留一个回滚副本。审计能指出 Worker 配置来自当前发行记录或环境清单。</td><td data-label="证据范围">配置回滚和校验通过，已合入基础设施源码。</td></tr>
           <tr><th scope="row">Handy 开发来源</th><td data-label="修复">服务端开发配置同时允许预期网页和桌面来源。</td><td data-label="证据范围">24 项定向检查通过，现场的已认证令牌请求仍待验收。</td></tr>
           <tr><th scope="row">跨环境服务凭据</th><td data-label="修复">可核对正在运行的 API 是否使用独立凭据。</td><td data-label="证据范围">4 项定向检查通过，现场轮换待完成。</td></tr>
-          <tr><th scope="row">支持请求密钥</th><td data-label="修复">独立密钥的配置入口已合入。服务端候选会在启用功能时校验密钥。</td><td data-label="证据范围">3 项配置检查与 12 项服务端检查通过。各节点仍待应用独立密钥并核对实际进程。</td></tr>
+          <tr><th scope="row">支持请求密钥</th><td data-label="修复">基础设施已合入独立配置入口，仍可为各环境配置专用密钥。</td><td data-label="证据范围">3 项配置检查通过。</td></tr>
           <tr><th scope="row">开发 Web 环境文件</th><td data-label="修复">开发环境的文件已限制为管理员可读写。</td><td data-label="证据范围">同一服务进程的健康检查前后均通过。</td></tr>
           <tr><th scope="row">开发 Peakron Web 自动发布</th><td data-label="修复">定向修复已合入，将发布分支切到 qa，并支持独立签名配置。</td><td data-label="证据范围">真实投递已定位签名拒绝与旧分支。7 项定向检查通过，待现场应用并核对任务编号。</td></tr>
           <tr><th scope="row">生产 API 版本漂移</th><td data-label="修复">每日检查使用同一个预期版本对照主、备 API 节点。</td><td data-label="证据范围">四组隔离场景通过，规则已合入。两台运行版本仍待对齐。</td></tr>
