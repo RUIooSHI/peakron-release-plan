@@ -126,12 +126,12 @@
       <div>
         <span class="brand">Peakron · 发布评审</span>
         <h1>封板修复计划</h1>
-        <p class="intro">先处理两项设备停止问题。设备恢复、云端任务、交互和文案分别推进，最后用同一候选包核验。</p>
+        <p class="intro">本轮修复范围是 Peakron 桌面客户端。验收重点是 Windows 完整包、真机设备、本地生成和桌面交互。</p>
       </div>
       <aside class="release" aria-label="发布状态与候选">
         <strong>暂缓封板</strong>
         <p>桌面版本 · 公开计划</p>
-        <p><time datetime="2026-11-23">2026-11-23</time> · 更新 U1 Linux 完整开发包验收</p>
+        <p><time datetime="2026-11-23">2026-11-23</time> · 桌面修复范围</p>
       </aside>
     </div>
   </header>
@@ -139,7 +139,7 @@
     <div class="wrap">
       <a href="#blockers">封板阻断</a>
       <a href="#device-link-followup">设备修复</a>
-      <a href="#web-and-worker-dispatch">网页任务和云端派发</a>
+      <a href="#web-and-worker-dispatch">网页与云端留档</a>
       <a href="#desktop-service-contracts">桌面错误与接口反馈</a>
       <a href="#player-discrete-seeks">播放器单次跳转</a>
       <a href="#player-drag-and-errors">播放器拖动与错误提示</a>
@@ -169,7 +169,7 @@
     <section id="blockers" aria-labelledby="blockers-title">
       <div class="section-head">
         <h2 id="blockers-title">封板阻断与当前安排</h2>
-        <p>原待验收的 58 条中，33 条已关账，25 条待验收。加上另列的四条，目前有 29 个原编号未关账。发布配置复核暂缓。</p>
+        <p>以下列出桌面版的验收条件。此前全栈审计的进度另有留档。</p>
       </div>
       <div class="grid">
         <article class="card" id="handy-stop">
@@ -194,6 +194,9 @@
             <dd>仅本地提交、旧会话回执和设备断开时，两处均如实显示未确认。只有对应远端证据到达后才显示已确认，同时覆盖媒体报错后的重试入口。</dd>
           </dl>
         </article>
+      </div>
+      <details>
+        <summary>此前的发布配置记录</summary>
         <article class="card" id="policy-key">
           <p class="id">D-008 · 暂缓处理</p>
           <h3>发布配置复核</h3>
@@ -203,13 +206,13 @@
             <dd>用待发布桌面包完成发布环境验收，核对策略校验和本地生成入口。</dd>
           </dl>
         </article>
-      </div>
+      </details>
     </section>
 
     <section id="device-link-followup" aria-labelledby="device-link-followup-title">
       <div class="section-head">
         <h2 id="device-link-followup-title">设备掉线、重连与错误提示</h2>
-        <p>设备提示与配置修复各有定向验证。实体设备与现场配置继续按验收范围记录。</p>
+        <p>设备提示已有定向验证，实体设备的停止与重连继续按真机结果验收。</p>
       </div>
       <table>
         <thead><tr><th scope="col">范围</th><th scope="col">修复</th><th scope="col">证据范围</th></tr></thead>
@@ -220,29 +223,37 @@
           <tr><th scope="row">Handy 测试与授权提示</th><td data-label="修复">测试失败详情显示一次。停止未确认仍给出手动停止提示和重试。令牌拒绝按原因提示等待或联系支持。</td><td data-label="证据范围">三种窗宽的受控桌面场景及四类授权拒绝检查通过。</td></tr>
           <tr><th scope="row">播放器恢复</th><td data-label="修复">等待期间保留停止未确认提示。可只重试停止，恢复失败说明下一步。混剪和音乐视频的关闭错误也可见。</td><td data-label="证据范围">三个定向桌面场景通过，物理停止待真机验收。</td></tr>
           <tr><th scope="row">断开超时</th><td data-label="修复">等候五秒后显示断开未确认。清理继续等待回执，设备输出保持关闭。</td><td data-label="证据范围">受控延迟和真实桌面界面。</td></tr>
+          <tr><th scope="row">Handy 开发来源</th><td data-label="修复">服务端开发配置同时允许预期网页和桌面来源。</td><td data-label="证据范围">24 项定向检查通过，现场的已认证令牌请求仍待验收。</td></tr>
+          <tr><th scope="row">开发 Web 环境文件</th><td data-label="修复">开发环境的文件已限制为管理员可读写。</td><td data-label="证据范围">同一服务进程的健康检查前后均通过。</td></tr>
+          <tr><th scope="row">实际设备</th><td data-label="修复">停止仍以回执确认。</td><td data-label="证据范围">Handy v3 Wi-Fi 默认策略的 24 次可测样本，画面冻结到滑块静止 P95 为 1,167 毫秒。实验策略 29 次为 1,800 毫秒，继续关闭。信号丢失和点击到停稳仍待验收。</td></tr>
+        </tbody>
+      </table>
+      <details>
+        <summary>此前的服务器与发布配置记录</summary>
+        <table>
+          <thead><tr><th scope="col">范围</th><th scope="col">修复</th><th scope="col">证据范围</th></tr></thead>
+          <tbody>
           <tr><th scope="row">Lovense 发布配置</th><td data-label="修复">源码移除测试凭据默认值，配置检查保护两类生产节点。</td><td data-label="证据范围">已验证源码与配置检查。生产主节点仍保留启用配置，待正式应用。</td></tr>
           <tr><th scope="row">开发加密配置</th><td data-label="修复">开发配置改为从环境取值，和其他环境使用同一配置方式。</td><td data-label="证据范围">定向配置检查通过。开发运行值已核对，与历史默认值不同。厂商凭据的撤销或轮换待验收。</td></tr>
           <tr><th scope="row">支持请求配置</th><td data-label="修复">已移除公开默认值。有效的专用密钥优先，缺少有效专用密钥时由现有部署密钥派生。保留用户级限额。</td><td data-label="证据范围">服务端 QA 已核对。17 项定向测试及 3 项隔离 Redis 验证通过。开发运行包已带修复，配置符合前置条件。生产版本及实际请求仍待验收。</td></tr>
           <tr><th scope="row">旧环境备份</th><td data-label="修复">已有定向清理入口，每份配置保留一个回滚副本。</td><td data-label="证据范围">三节点只读预检识别 94 份冗余备份。5 项隔离测试通过，现场未删除。</td></tr>
           <tr><th scope="row">环境回滚与 Worker 配置</th><td data-label="修复">每份受管环境文件仅保留一个回滚副本。审计能指出 Worker 配置来自当前发行记录或环境清单。</td><td data-label="证据范围">配置回滚和校验通过，已合入基础设施源码。</td></tr>
-          <tr><th scope="row">Handy 开发来源</th><td data-label="修复">服务端开发配置同时允许预期网页和桌面来源。</td><td data-label="证据范围">24 项定向检查通过，现场的已认证令牌请求仍待验收。</td></tr>
           <tr><th scope="row">跨环境服务凭据</th><td data-label="修复">可核对正在运行的 API 是否使用独立凭据。</td><td data-label="证据范围">4 项定向检查通过。现场复查确认开发与生产主节点仍有共享凭据，待独立发放和轮换。</td></tr>
           <tr><th scope="row">支持请求密钥</th><td data-label="修复">基础设施已合入独立配置入口，仍可为各环境配置专用密钥。</td><td data-label="证据范围">3 项配置检查通过。</td></tr>
-          <tr><th scope="row">开发 Web 环境文件</th><td data-label="修复">开发环境的文件已限制为管理员可读写。</td><td data-label="证据范围">同一服务进程的健康检查前后均通过。</td></tr>
           <tr><th scope="row">开发 Peakron Web 自动发布</th><td data-label="修复">定向修复已合入，将发布分支切到 qa，并支持独立签名配置。</td><td data-label="证据范围">7 项定向检查通过。最新 QA 版本由手动任务发布，自动投递仍待实际通过。</td></tr>
           <tr><th scope="row">生产 API 版本漂移</th><td data-label="修复">每日检查使用同一个预期版本对照主、备 API 节点。</td><td data-label="证据范围">四组隔离场景通过，规则已合入。两台运行版本仍待对齐。</td></tr>
           <tr><th scope="row">开发旧上传配置</th><td data-label="修复">定向迁移已合入，可独立移除旧路由与参数。</td><td data-label="证据范围">原配置快照与回滚验证通过。当前开发 API 上的只读预检通过，文件和服务状态保持一致，待正式应用。</td></tr>
           <tr><th scope="row">HTTPS 视频探测</th><td data-label="修复">定向修复已合入，给生产次节点的静态 ffprobe 补名称解析服务。</td><td data-label="证据范围">主节点通过公开 HTTPS 视频探测。次节点在隔离对照中修复成功，只读预检通过，待正式应用。</td></tr>
           <tr><th scope="row">主节点上传发布</th><td data-label="修复">可预置直传配置并保留旧链路，发布时先验证配置，再安装和迁移。</td><td data-label="证据范围">七项预置检查和四组发布检查通过。主节点运行中仍用旧上传链路，待正式切换。</td></tr>
           <tr><th scope="row">开发模型分发</th><td data-label="修复">增加独立配置入口，沿用已有分发设置。</td><td data-label="证据范围">11 项隔离检查通过。退役步骤已合入，保留桌面模型分发。隔离回滚及当前运行环境的旧服务退役预检通过，待正式应用和授权分发验收。</td></tr>
-          <tr><th scope="row">实际设备</th><td data-label="修复">停止仍以回执确认。</td><td data-label="证据范围">Handy v3 Wi-Fi 默认策略的 24 次可测样本，画面冻结到滑块静止 P95 为 1,167 毫秒。实验策略 29 次为 1,800 毫秒，继续关闭。信号丢失和点击到停稳仍待验收。</td></tr>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </details>
     </section>
 
     <section id="web-and-worker-dispatch" aria-labelledby="web-and-worker-dispatch-title">
       <div class="section-head">
-        <h2 id="web-and-worker-dispatch-title">网页任务和云端派发</h2>
+        <h2 id="web-and-worker-dispatch-title">此前的网页任务与云端派发</h2>
         <p>旧网页任务列表遇到缺少阶段的记录时可以继续刷新。已完成任务进入历史记录。</p>
       </div>
       <p>云端派发的两个入口已用同一份约定验证。部署模板中此路径为关闭状态，实际执行待验收。</p>
