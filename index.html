@@ -169,7 +169,7 @@
     <section id="blockers" aria-labelledby="blockers-title">
       <div class="section-head">
         <h2 id="blockers-title">封板阻断与当前安排</h2>
-        <p>两项设备问题共享停止状态的验收。发布配置复核暂缓。</p>
+        <p>原来待补证据的 58 条记录中，33 条已关账，剩 25 条待平台、设备或现场证据。发布配置复核暂缓。</p>
       </div>
       <div class="grid">
         <article class="card" id="handy-stop">
@@ -485,7 +485,7 @@
           <tbody>
             <tr>
               <th scope="row">设备恢复与提示 <span class="minor">I-R02 / I-R03 / I-R04</span></th>
-              <td data-label="拟改动">媒体错误时保留停止信息和可用的恢复入口。Intiface 两个重连入口已通过桌面定向验证。UDP 按通道可观测的证据显示连接状态。</td>
+              <td data-label="拟改动">媒体错误时保留停止信息和可用的恢复入口。Intiface 两个重连入口已通过桌面定向验证。全局停止提示已改为用户用语。空闲停止后，恢复「已连接」需新回执。UDP 按通道可观测的证据显示连接状态。</td>
               <td data-label="验收">媒体出错后仍可重试停止。Intiface 的 Connect 建立新会话并保持输出关闭。Resume sync 等待新会话的停止回执，再恢复输出。跨会话旧回执已通过协议单测。UDP 模拟全丢时，界面在本地通道约定时限内如实提示。</td>
             </tr>
             <tr>
@@ -499,9 +499,9 @@
               <td data-label="验收">同坐标单击与双击在 Electron 中均通过。两次都只提交一次，保留原草稿节点。</td>
             </tr>
             <tr>
-              <th scope="row">8K VR 拖动 <span class="minor">B-002 / B-012 · Mac 安装包功能验证通过，短拖性能待收尾</span></th>
+              <th scope="row">8K VR 拖动 <span class="minor">B-002 / B-012 · Mac 拖动通过，跨平台验收中</span></th>
               <td data-label="改动">已缓冲位置由原播放器出画。拖出缓冲区时，候选应用从同一原片后台取帧，松手恢复原片。</td>
-              <td data-label="验收">Mac 安装候选会在指针停稳后准备原片落点。20 次立即松手的短拖，出画和原片交接 P95 为 90.9 和 99.4 毫秒。六次长拖为每秒 10.60–17.79 张。蓝牙输出下续播仍有停顿。Windows、Linux 实体安装与交互待验收。</td>
+              <td data-label="验收">Mac 安装候选会在指针停稳后准备原片落点。20 次立即松手的短拖，出画和原片交接 P95 为 90.9 和 99.4 毫秒。六次长拖为每秒 10.60–17.79 张。蓝牙输出下续播仍有停顿。Linux x64 完整原生运行时在模拟环境通过了原片取帧检查。Windows 11 实机一轮定向拖动和续播通过。该轮使用候选播放器和取帧程序，搭配已有核心。完整 Windows 安装包受磁盘空间限制，普通桌面性能待验收。</td>
             </tr>
             <tr>
               <th scope="row">设备提示与混剪来源 <span class="minor">A3-009 / A3-010 · 已通过</span></th>
