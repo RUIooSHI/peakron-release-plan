@@ -499,9 +499,9 @@
               <td data-label="验收">同坐标单击与双击在 Electron 中均通过。两次都只提交一次，保留原草稿节点。</td>
             </tr>
             <tr>
-              <th scope="row">8K VR 拖动 <span class="minor">B-002 / B-012 · 原片仍待达标</span></th>
+              <th scope="row">8K VR 拖动 <span class="minor">B-002 / B-012 · Mac 出帧达标，已缓冲延迟待修</span></th>
               <td data-label="改动">暂停时长按方向键会合并待处理的跳转，松键提交最终位置。播放器仍可选择临时播放副本，macOS 保留 8K，Linux 和 Windows 提供 4K 兼容版。</td>
-              <td data-label="验收">Mac 真实播放器已接入常驻解码实验。预热后，FFmpeg 9.0.2 六个手势全部达到每秒 10 张。仓库固定版本两次独立冷启动通过，完整六手势有四个达标。松手定位和 Esc 均通过。已缓冲跳转延迟、安装包、Windows 和实体 Linux 仍待验收。</td>
+              <td data-label="验收">使用仓库固定的 FFmpeg 后，Mac 原片六个手势达到每秒 13.70–18.61 张，松手与取消通过。已缓冲短距离往返各 20 次，最慢画面的 P95 为播放器 234 毫秒、原生参照 131 毫秒。延迟门槛、Windows 与实体 Linux 安装包仍待验收。</td>
             </tr>
             <tr>
               <th scope="row">设备提示与混剪来源 <span class="minor">A3-009 / A3-010 · 已通过</span></th>
