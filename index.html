@@ -221,12 +221,12 @@
           <tr><th scope="row">播放器恢复</th><td data-label="修复">等待期间保留停止未确认提示。可只重试停止，恢复失败说明下一步。混剪和音乐视频的关闭错误也可见。</td><td data-label="证据范围">三个定向桌面场景通过，物理停止待真机验收。</td></tr>
           <tr><th scope="row">断开超时</th><td data-label="修复">等候五秒后显示断开未确认。清理继续等待回执，设备输出保持关闭。</td><td data-label="证据范围">受控延迟和真实桌面界面。</td></tr>
           <tr><th scope="row">Lovense 发布配置</th><td data-label="修复">源码移除测试凭据默认值，配置检查保护两类生产节点。</td><td data-label="证据范围">已验证源码与配置检查。生产主节点仍保留启用配置，待正式应用。</td></tr>
-          <tr><th scope="row">开发加密配置</th><td data-label="修复">开发配置改为从环境取值，和其他环境使用同一配置方式。</td><td data-label="证据范围">定向配置检查通过。已发放凭据的轮换仍待确认。</td></tr>
+          <tr><th scope="row">开发加密配置</th><td data-label="修复">开发配置改为从环境取值，和其他环境使用同一配置方式。</td><td data-label="证据范围">定向配置检查通过。开发运行值已核对，与历史默认值不同。厂商凭据的撤销或轮换待验收。</td></tr>
           <tr><th scope="row">支持请求配置</th><td data-label="修复">已移除公开默认值。有效的专用密钥优先，缺少有效专用密钥时由现有部署密钥派生。保留用户级限额。</td><td data-label="证据范围">服务端 QA 已核对。17 项定向测试及 3 项隔离 Redis 验证通过。开发运行包已带修复，配置符合前置条件。生产版本及实际请求仍待验收。</td></tr>
           <tr><th scope="row">旧环境备份</th><td data-label="修复">已有定向清理入口，每份配置保留一个回滚副本。</td><td data-label="证据范围">三节点只读预检识别 94 份冗余备份。5 项隔离测试通过，现场未删除。</td></tr>
           <tr><th scope="row">环境回滚与 Worker 配置</th><td data-label="修复">每份受管环境文件仅保留一个回滚副本。审计能指出 Worker 配置来自当前发行记录或环境清单。</td><td data-label="证据范围">配置回滚和校验通过，已合入基础设施源码。</td></tr>
           <tr><th scope="row">Handy 开发来源</th><td data-label="修复">服务端开发配置同时允许预期网页和桌面来源。</td><td data-label="证据范围">24 项定向检查通过，现场的已认证令牌请求仍待验收。</td></tr>
-          <tr><th scope="row">跨环境服务凭据</th><td data-label="修复">可核对正在运行的 API 是否使用独立凭据。</td><td data-label="证据范围">4 项定向检查通过，现场轮换待完成。</td></tr>
+          <tr><th scope="row">跨环境服务凭据</th><td data-label="修复">可核对正在运行的 API 是否使用独立凭据。</td><td data-label="证据范围">4 项定向检查通过。现场复查确认开发与生产主节点仍有共享凭据，待独立发放和轮换。</td></tr>
           <tr><th scope="row">支持请求密钥</th><td data-label="修复">基础设施已合入独立配置入口，仍可为各环境配置专用密钥。</td><td data-label="证据范围">3 项配置检查通过。</td></tr>
           <tr><th scope="row">开发 Web 环境文件</th><td data-label="修复">开发环境的文件已限制为管理员可读写。</td><td data-label="证据范围">同一服务进程的健康检查前后均通过。</td></tr>
           <tr><th scope="row">开发 Peakron Web 自动发布</th><td data-label="修复">定向修复已合入，将发布分支切到 qa，并支持独立签名配置。</td><td data-label="证据范围">真实投递已定位签名拒绝与旧分支。7 项定向检查通过，待现场应用并核对任务编号。</td></tr>
