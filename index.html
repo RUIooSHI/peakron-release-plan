@@ -229,7 +229,7 @@
           <tr><th scope="row">跨环境服务凭据</th><td data-label="修复">可核对正在运行的 API 是否使用独立凭据。</td><td data-label="证据范围">4 项定向检查通过。现场复查确认开发与生产主节点仍有共享凭据，待独立发放和轮换。</td></tr>
           <tr><th scope="row">支持请求密钥</th><td data-label="修复">基础设施已合入独立配置入口，仍可为各环境配置专用密钥。</td><td data-label="证据范围">3 项配置检查通过。</td></tr>
           <tr><th scope="row">开发 Web 环境文件</th><td data-label="修复">开发环境的文件已限制为管理员可读写。</td><td data-label="证据范围">同一服务进程的健康检查前后均通过。</td></tr>
-          <tr><th scope="row">开发 Peakron Web 自动发布</th><td data-label="修复">定向修复已合入，将发布分支切到 qa，并支持独立签名配置。</td><td data-label="证据范围">真实投递已定位签名拒绝与旧分支。7 项定向检查通过，待现场应用并核对任务编号。</td></tr>
+          <tr><th scope="row">开发 Peakron Web 自动发布</th><td data-label="修复">定向修复已合入，将发布分支切到 qa，并支持独立签名配置。</td><td data-label="证据范围">7 项定向检查通过。最新 QA 版本由手动任务发布，自动投递仍待实际通过。</td></tr>
           <tr><th scope="row">生产 API 版本漂移</th><td data-label="修复">每日检查使用同一个预期版本对照主、备 API 节点。</td><td data-label="证据范围">四组隔离场景通过，规则已合入。两台运行版本仍待对齐。</td></tr>
           <tr><th scope="row">开发旧上传配置</th><td data-label="修复">定向迁移已合入，可独立移除旧路由与参数。</td><td data-label="证据范围">原配置快照与回滚验证通过。当前开发 API 上的只读预检通过，文件和服务状态保持一致，待正式应用。</td></tr>
           <tr><th scope="row">HTTPS 视频探测</th><td data-label="修复">定向修复已合入，给生产次节点的静态 ffprobe 补名称解析服务。</td><td data-label="证据范围">主节点通过公开 HTTPS 视频探测。次节点在隔离对照中修复成功，只读预检通过，待正式应用。</td></tr>
