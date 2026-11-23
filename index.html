@@ -131,7 +131,7 @@
       <aside class="release" aria-label="发布状态与候选">
         <strong>暂缓封板</strong>
         <p>桌面版本 · 公开计划</p>
-        <p><time datetime="2026-11-22">2026-11-22</time> · 旧网页刷新和云端派发已更新</p>
+        <p><time datetime="2026-11-22">2026-11-22</time> · 更新原片拖动安装包证据</p>
       </aside>
     </div>
   </header>
@@ -499,9 +499,9 @@
               <td data-label="验收">同坐标单击与双击在 Electron 中均通过。两次都只提交一次，保留原草稿节点。</td>
             </tr>
             <tr>
-              <th scope="row">8K VR 拖动 <span class="minor">B-002 / B-012 · Mac 定向验收通过，安装包待验</span></th>
-              <td data-label="改动">暂停时长按方向键会合并待处理的跳转，松键提交最终位置。播放器仍可选择临时播放副本，macOS 保留 8K，Linux 和 Windows 提供 4K 兼容版。</td>
-              <td data-label="验收">Mac 已缓冲短拖 20 次的出帧 P95 为 143.6 毫秒，低于 150 毫秒。仓库固定版本下，六个长拖手势达到每秒 12.11–17.78 张。短拖、长拖及越出缓冲区的松手落点均正确。安装包以及实际 Windows 和 Linux 的性能仍待验收。</td>
+              <th scope="row">8K VR 拖动 <span class="minor">B-002 / B-012 · Mac 安装包功能验证通过，短拖性能待收尾</span></th>
+              <td data-label="改动">已缓冲位置由原播放器出画。拖出缓冲区时，候选应用从同一原片后台取帧，松手恢复原片。</td>
+              <td data-label="验收">Mac 安装包的六次长拖达到每秒 11.19–16.84 张，松手和 Esc 均正确。前一轮有一次长拖低于门槛。已缓冲短拖 P95 为 184.5 毫秒，原生对照为 184.3 毫秒，均高于 150 毫秒。Linux 和 Windows x64 的辅助程序已在模拟环境取帧，两端实体机的安装与交互仍待验收。</td>
             </tr>
             <tr>
               <th scope="row">设备提示与混剪来源 <span class="minor">A3-009 / A3-010 · 已通过</span></th>
